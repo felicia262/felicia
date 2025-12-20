@@ -1,0 +1,24 @@
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  date: string;
+  image: string;
+  category: string;
+}
+
+export interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  type: 'Project' | 'Certificate' | 'Competition';
+  image: string;
+  link?: string;
+}
+
+export interface NavItem {
+  label: string;
+  href: string;
+}
