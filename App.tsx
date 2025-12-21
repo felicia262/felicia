@@ -29,7 +29,7 @@ const App: React.FC = () => {
   const t = TRANSLATIONS[lang];
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [view, activePost, activeAchievement]);
 
   useEffect(() => {
@@ -45,13 +45,23 @@ const App: React.FC = () => {
     setActiveAchievement(null);
     setSearchOpen(false);
     
-    // Simple state routing
     if (href === 'home' || href === 'about' || href === 'contact') {
       setView('home');
       setTimeout(() => {
         const element = document.getElementById(href);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+        if (element) {
+          const offset = 60;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 150);
     } else if (href === 'blog') {
       setView('blog');
     } else if (href === 'achievements') {
@@ -66,6 +76,8 @@ const App: React.FC = () => {
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }, [searchQuery, lang]);
+
+  const isDarkTheme = view === 'achievements';
 
   const SearchOverlay = () => (
     <div className="fixed inset-0 z-[200] apple-blur animate-in fade-in duration-300 flex flex-col items-center pt-32 px-6">
@@ -152,7 +164,13 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-blue-100">
-      <Navbar onNavClick={handleNavClick} language={lang} setLanguage={setLang} onSearchOpen={() => setSearchOpen(true)} />
+      <Navbar 
+        onNavClick={handleNavClick} 
+        language={lang} 
+        setLanguage={setLang} 
+        onSearchOpen={() => setSearchOpen(true)} 
+        isDarkTheme={isDarkTheme}
+      />
       
       <main>
         {view === 'home' && (
@@ -172,7 +190,7 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            <section id="about" className="py-24 px-6 bg-[#f5f5f7]">
+            <section id="about" className="py-32 px-6 bg-[#f5f5f7]">
               <div className="max-w-4xl mx-auto text-center md:text-left">
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-12">{t.aboutTitle}</h2>
                 <div className="grid md:grid-cols-2 gap-12 text-lg text-gray-600 leading-relaxed text-left">
@@ -181,7 +199,7 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            <section className="py-24 px-6">
+            <section className="py-32 px-6">
               <div className="max-w-6xl mx-auto">
                 <div className="flex items-end justify-between mb-16">
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">{t.blogTitle}</h2>
@@ -197,7 +215,7 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            <section className="py-24 px-6 bg-black text-white">
+            <section className="py-32 px-6 bg-black text-white">
               <div className="max-w-6xl mx-auto">
                 <div className="flex items-end justify-between mb-16">
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">{t.achTitle}</h2>
@@ -229,12 +247,12 @@ const App: React.FC = () => {
         )}
 
         {view === 'blog' && (
-          <section className="py-32 px-6 min-h-screen">
+          <section className="pt-24 pb-32 px-6 min-h-screen">
             <div className="max-w-6xl mx-auto">
               <div className="mb-16">
-                <button onClick={() => setView('home')} className="text-blue-600 mb-4 flex items-center gap-2">← {t.back}</button>
+                <button onClick={() => setView('home')} className="text-blue-600 mb-6 flex items-center gap-2 hover:translate-x-[-4px] transition-transform">← {t.back}</button>
                 <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">{t.blogTitle}</h2>
-                <p className="text-2xl text-gray-500">{t.blogDesc}</p>
+                <p className="text-2xl text-gray-500 font-light">{t.blogDesc}</p>
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                 {BLOG_POSTS[lang].map((post, index) => (
@@ -248,11 +266,11 @@ const App: React.FC = () => {
         )}
 
         {view === 'achievements' && (
-          <section className="py-32 px-6 bg-black text-white min-h-screen">
+          <section className="pt-24 pb-32 px-6 bg-black text-white min-h-screen">
             <div className="max-w-6xl mx-auto">
               <div className="mb-16">
-                <button onClick={() => setView('home')} className="text-blue-400 mb-4 flex items-center gap-2">← {t.back}</button>
-                <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">{t.achTitle}</h2>
+                <button onClick={() => setView('home')} className="text-blue-400 mb-6 flex items-center gap-2 hover:translate-x-[-4px] transition-transform">← {t.back}</button>
+                <h2 className="text-5xl md:text-7xl font-bold tracking-tighter">{t.achTitle}</h2>
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {ACHIEVEMENTS[lang].map((item, index) => (

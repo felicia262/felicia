@@ -8,9 +8,10 @@ interface NavbarProps {
   language: Language;
   setLanguage: (lang: Language) => void;
   onSearchOpen: () => void;
+  isDarkTheme?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onNavClick, language, setLanguage, onSearchOpen }) => {
+const Navbar: React.FC<NavbarProps> = ({ onNavClick, language, setLanguage, onSearchOpen, isDarkTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -21,8 +22,16 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, language, setLanguage, onSe
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const themeClass = isDarkTheme 
+    ? (isScrolled ? 'bg-black/70 text-white border-white/10' : 'bg-transparent text-white')
+    : (isScrolled ? 'apple-blur text-black border-gray-200' : 'bg-transparent text-black');
+
+  const navItemClass = isDarkTheme 
+    ? 'text-gray-300 hover:text-white' 
+    : 'text-gray-800 hover:text-blue-500';
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${isScrolled ? 'apple-blur border-b border-gray-200' : 'bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 border-b ${isScrolled ? 'backdrop-blur-xl' : 'border-transparent'} ${themeClass}`}>
       <div className="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between">
         <div 
           onClick={() => onNavClick('home')}
@@ -35,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, language, setLanguage, onSe
             <button
               key={item.href}
               onClick={() => onNavClick(item.href)}
-              className="text-[12px] font-medium text-gray-800 hover:text-blue-500 transition-colors uppercase tracking-[0.15em]"
+              className={`text-[11px] font-semibold transition-colors uppercase tracking-[0.2em] ${navItemClass}`}
             >
               {item.label}
             </button>
@@ -45,21 +54,21 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, language, setLanguage, onSe
           <div className="flex items-center gap-3 text-[11px] font-bold">
             <button 
               onClick={() => setLanguage('vi')}
-              className={`${language === 'vi' ? 'text-black' : 'text-gray-400'} hover:text-black transition-colors`}
+              className={`${language === 'vi' ? (isDarkTheme ? 'text-white' : 'text-black') : 'text-gray-400'} hover:opacity-70 transition-colors`}
             >
               VI
             </button>
-            <span className="text-gray-200">|</span>
+            <span className="opacity-20">|</span>
             <button 
               onClick={() => setLanguage('en')}
-              className={`${language === 'en' ? 'text-black' : 'text-gray-400'} hover:text-black transition-colors`}
+              className={`${language === 'en' ? (isDarkTheme ? 'text-white' : 'text-black') : 'text-gray-400'} hover:opacity-70 transition-colors`}
             >
               EN
             </button>
           </div>
            <button 
             onClick={onSearchOpen}
-            className="text-gray-400 hover:text-black transition-colors"
+            className={`${isDarkTheme ? 'text-gray-300 hover:text-white' : 'text-gray-400 hover:text-black'} transition-colors`}
            >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
