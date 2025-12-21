@@ -15,6 +15,7 @@ export interface Achievement {
   description: string;
   type: 'Project' | 'Certificate' | 'Competition';
   image: string;
+  images?: string[];
   link?: string;
 }
 
@@ -22,3 +23,5 @@ export interface NavItem {
   label: string;
   href: string;
 }
+
+export type Language = 'vi' | 'en';
