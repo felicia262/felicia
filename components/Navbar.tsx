@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavClick, language, setLanguage, onSe
           onClick={() => onNavClick('home')}
           className="font-bold text-xl tracking-tighter hover:opacity-70 transition-opacity cursor-pointer"
         >
-          A.
+          COER.
         </div>
         <div className="hidden md:flex space-x-10">
           {NAV_ITEMS[language].map((item) => (

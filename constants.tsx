@@ -26,8 +26,9 @@ export const CONTACT_INFO = {
 
 export const SOCIAL_LINKS = [
   { name: 'GitHub', url: 'https://github.com' },
-  { name: 'Facebook', url: 'https://facebook.com' },
-  { name: 'Instagram', url: 'https://instagram.com' }
+  { name: 'LinkedIn', url: 'https://linkedin.com' },
+  { name: 'Facebook', url: 'https://www.facebook.com/share/1akaZaTPbx/?mibextid=wwXIfr' },
+  { name: 'Instagram', url: 'https://www.instagram.com/_ngn.thao26/' }
 ];
 
 export const BLOG_POSTS: Record<Language, BlogPost[]> = {
@@ -203,30 +204,152 @@ export const ACHIEVEMENTS: Record<Language, Achievement[]> = {
   vi: [
     {
       id: 'a1',
-      title: 'Hệ thống Chat mã hóa End-to-End',
-      description: 'Dự án Lập trình mạng sử dụng Java Socket và thuật toán AES để bảo mật tin nhắn.',
-      type: 'Project',
-      image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&q=80&w=800',
+      title: 'Cuộc thi CTF - The Maze Of Shadows',
+      description: `
+      The Maze Of Shadows là một cuộc thi CTF (Capture The Flag) mang tính thử thách cao, tập trung vào các kỹ năng an toàn thông tin và tư duy giải quyết vấn đề. Cuộc thi được thiết kế như một “mê cung bóng tối”, nơi người tham gia phải lần lượt vượt qua các thử thách thuộc nhiều lĩnh vực khác nhau như Cryptography, Web Security, Reverse Engineering, Forensics và Pwn.
+
+      Trong quá trình tham gia, tôi đã rèn luyện khả năng phân tích lỗ hổng, tư duy logic, làm việc dưới áp lực thời gian, cũng như kỹ năng tìm kiếm và khai thác thông tin ẩn trong hệ thống. Cuộc thi không chỉ giúp tôi củng cố kiến thức nền tảng về an ninh mạng mà còn nâng cao tinh thần làm việc nhóm và khả năng tự học, tự nghiên cứu khi đối mặt với những bài toán mới và khó.
+      `,
+      type: 'Competition',
+      image: 'images/chungnhan_131522.png',
       images: [
-        'https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&q=80&w=1200',
-        'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200'
+        'images/chungnhan_131522.png',
+        'images/8FAowZT.jpg',
       ],
-      link: '#'
-    }
+    },
+    {
+      id: 'a2',
+      title: 'Vòng Chung Kết Cuộc thi "Sinh viên với ANTT 2025"',
+      description: `
+      Vòng Chung Kết cuộc thi "Sinh viên với An toàn Thông tin 2025" là chặng thi quan trọng, nơi các đội xuất sắc nhất được lựa chọn sau các vòng loại. Cuộc thi tập trung đánh giá kiến thức nền tảng và kỹ năng thực hành trong lĩnh vực an toàn thông tin, bao gồm phân tích lỗ hổng, bảo mật hệ thống, an ninh mạng và xử lý các tình huống tấn công thực tế.
+
+      Thông qua việc tham gia vòng chung kết, tôi đã có cơ hội áp dụng kiến thức đã học vào bài toán thực tiễn, nâng cao tư duy phân tích, khả năng làm việc nhóm và kỹ năng giải quyết vấn đề dưới áp lực thời gian. Đây là trải nghiệm quan trọng giúp tôi củng cố định hướng theo đuổi lĩnh vực an toàn thông tin trong tương lai.
+      `,
+
+      type: 'Competition',
+      image: 'images/lGnIlP.jpg',
+      images: [
+        'images/lGnIlP.jpg',
+        'images/chungnhan_132594.png',
+        'images/E0hS9Ns.jpg',
+        'images/9lOhXsw.jpg',
+      ],
+    },
+    {
+      id: 'a3',
+      title: 'Cisco Networking Academy – Introduction to Cybersecurity',
+      description: 'Hoàn thành khóa Introduction to Cybersecurity do Cisco Networking Academy phối hợp HUTECH tổ chức, bao gồm tổng quan mối đe dọa, quy trình bảo vệ mạng và vai trò của đội phản ứng.',
+      type: 'Certificate',
+      image: 'images/Introduction_to_Cybersecurity.jpg',
+      images: [
+        'images/Introduction_to_Cybersecurity.jpg',
+      ],
+    },
+        {
+      id: 'a4',
+      title: 'Cisco Networking Academy – Networking Basics',
+      description: 'Chứng chỉ Networking Basics giúp tôi nắm vững mô hình OSI, địa chỉ IP, định tuyến cơ bản và thiết kế mạng nhỏ. Các bài lab tập trung vào cấu hình thiết bị SOHO, kiểm tra lưu lượng và củng cố ý thức bảo mật ngay từ lớp truy cập.',
+      type: 'Certificate',
+      image: 'images/Networking_Basics.jpg',
+      images: [
+        'images/Networking_Basics.jpg',
+      ],
+    },
+       {
+      id: 'a5',
+      title: 'Cisco Networking Academy – JavaScript Essentials 1',
+      description: 'Khóa JavaScript Essentials 1 giúp tôi củng cố nền tảng lập trình JavaScript với cú pháp ES6, thao tác biến/hàm, làm việc với DOM và sự kiện để xây dựng front-end ổn định và an toàn hơn.',
+      type: 'Certificate',
+      image: 'images/JavaScript_Essentials_1_certificate.jpg',
+      images: [
+        'images/JavaScript_Essentials_1_certificate.jpg',
+      ],
+    },
+       {
+      id: 'a6',
+      title: 'Cisco Networking Academy – JavaScript Essentials 2',
+      description: 'Khóa JavaScript Essentials 2 mở rộng sang quản lý bất đồng bộ, thao tác API REST, xử lý lỗi tinh gọn và viết mã module hóa để phục vụ các dự án front-end thực tế trong môi trường NetAcad.',
+      type: 'Certificate',
+      image: 'images/JavaScript_Essentials_2_certificate.jpg',
+      images: [
+        'images/JavaScript_Essentials_2_certificate.jpg',
+      ],
+    },
   ],
   en: [
     {
       id: 'a1',
-      title: 'End-to-End Encrypted Chat System',
-      description: 'Network programming project using Java Sockets and AES encryption to secure messages.',
-      type: 'Project',
-      image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&q=80&w=800',
+      title: 'CTF Competition – The Maze Of Shadows',
+      description: `
+      The Maze Of Shadows is a challenging Capture The Flag (CTF) competition that focuses on information security skills and problem-solving thinking. The competition is designed as a “maze of shadows,” where participants must overcome a series of challenges across multiple domains, including Cryptography, Web Security, Reverse Engineering, Forensics, and Pwn.
+
+      Through participating in the competition, I strengthened my vulnerability analysis skills, logical thinking, and ability to work under time pressure, as well as my capability to search for and exploit hidden information within systems. The competition not only reinforced my foundational knowledge of cybersecurity but also enhanced my teamwork skills and self-learning ability when facing complex and unfamiliar problems.
+      `,
+      type: 'Competition',
+      image: 'images/chungnhan_131522.png',
       images: [
-        'https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&q=80&w=1200',
-        'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200'
+        'images/chungnhan_131522.png',
+        'images/8FAowZT.jpg',
       ],
-      link: '#'
-    }
+    },
+    {
+      id: 'a2',
+      title: 'Final Round – "Students with Information Security 2025" Competition',
+      description: `
+      The Final Round of the "Students with Information Security 2025" competition represents a key stage where the most outstanding teams are selected after the preliminary rounds. The competition evaluates both fundamental knowledge and practical skills in information security, including vulnerability analysis, system security, network security, and real-world attack scenario handling.
+
+      By participating in the final round, I had the opportunity to apply theoretical knowledge to practical challenges, improving my analytical thinking, teamwork abilities, and problem-solving skills under time constraints. This experience played an important role in strengthening my commitment to pursuing a career in information security.
+      `,
+      type: 'Competition',
+      image: 'images/lGnIlP.jpg',
+      images: [
+        'images/lGnIlP.jpg',
+        'images/chungnhan_132594.png',
+        'images/E0hS9Ns.jpg',
+        'images/9lOhXsw.jpg',
+      ],
+    },
+    {
+      id: 'a3',
+      title: 'Cisco Networking Academy – Introduction to Cybersecurity',
+      description: 'Completed the Introduction to Cybersecurity course organized by Cisco Networking Academy in collaboration with HUTECH, covering an overview of cyber threats, network protection processes, and the role of incident response teams.',
+      type: 'Certificate',
+      image: 'images/Introduction_to_Cybersecurity.jpg',
+      images: [
+        'images/Introduction_to_Cybersecurity.jpg',
+      ],
+    },
+    {
+      id: 'a4',
+      title: 'Cisco Networking Academy – Networking Basics',
+      description: 'The Networking Basics certificate helped me gain a solid understanding of the OSI model, IP addressing, basic routing, and small network design. Hands-on labs focused on configuring SOHO devices, traffic inspection, and reinforcing security awareness at the access layer.',
+      type: 'Certificate',
+      image: 'images/Networking_Basics.jpg',
+      images: [
+        'images/Networking_Basics.jpg',
+      ],
+    },
+    {
+      id: 'a5',
+      title: 'Cisco Networking Academy – JavaScript Essentials 1',
+      description: 'The JavaScript Essentials 1 course strengthened my foundational JavaScript programming skills, including ES6 syntax, variables and functions, DOM manipulation, and event handling to build more stable and secure front-end applications.',
+      type: 'Certificate',
+      image: 'images/JavaScript_Essentials_1_certificate.jpg',
+      images: [
+        'images/JavaScript_Essentials_1_certificate.jpg',
+      ],
+    },
+    {
+      id: 'a6',
+      title: 'Cisco Networking Academy – JavaScript Essentials 2',
+      description: 'The JavaScript Essentials 2 course expanded my knowledge into asynchronous programming, REST API interaction, clean error handling, and modular code writing to support real-world front-end projects within the NetAcad environment.',
+      type: 'Certificate',
+      image: 'images/JavaScript_Essentials_2_certificate.jpg',
+      images: [
+        'images/JavaScript_Essentials_2_certificate.jpg',
+      ],
+},
+
   ]
 };
 
@@ -238,8 +361,8 @@ export const TRANSLATIONS = {
     explore: 'Khám phá thêm',
     viewBlog: 'Xem blog của mình',
     aboutTitle: 'Về mình.',
-    aboutP1: 'Mình là một sinh viên CNTT đam mê khám phá sự giao thoa giữa phần cứng và phần mềm...',
-    aboutP2: 'Phương châm của mình là "Làm cho nó hoạt động, sau đó làm cho nó tối giản"...',
+    aboutP1: 'Mình là sinh viên năm 4 ngành Công nghệ Thông tin, chuyên ngành An ninh mạng. Trong quá trình học tập, mình tập trung vào việc nắm vững kiến thức nền tảng về mạng máy tính, hệ điều hành và các nguyên lý bảo mật, đồng thời rèn luyện tư duy phân tích và giải quyết vấn đề thông qua các bài tập và đồ án thực hành.',
+    aboutP2: 'Mình quan tâm đến việc xây dựng hệ thống an toàn và ổn định, từ bảo mật mạng, ứng dụng web đến cách phát hiện và xử lý các rủi ro an ninh. Mục tiêu của mình là tiếp tục học hỏi, tích lũy kinh nghiệm thực tế và từng bước phát triển trong lĩnh vực an toàn thông tin.',
     blogTitle: 'Blog Mạng.',
     blogDesc: 'Chia sẻ kiến thức về giao thức, hạ tầng và những trải nghiệm thực tế trong lập trình mạng.',
     achTitle: 'Thành tựu.',
@@ -247,7 +370,7 @@ export const TRANSLATIONS = {
     contactDesc: 'Mình luôn sẵn sàng thảo luận về các dự án mạng, cơ hội thực tập hoặc chỉ là một cuộc trò chuyện về công nghệ.',
     phone: 'Số điện thoại',
     email: 'Email cá nhân',
-    copyright: '© 2025 Nguyễn Thị Thanh Thảo. Thiết kế lấy cảm hứng từ sự tối giản của Apple.',
+    copyright: '© 2025 Nguyễn Thị Thanh Thảo.',
     searchPlaceholder: 'Tìm kiếm bài viết...',
     back: 'Quay lại',
     readMore: 'Đọc tiếp',
@@ -261,8 +384,8 @@ export const TRANSLATIONS = {
     explore: 'Explore More',
     viewBlog: 'View my blog',
     aboutTitle: 'About me.',
-    aboutP1: "I'm an IT student passionate about exploring the intersection of hardware and software...",
-    aboutP2: 'My motto is "Make it work, then make it minimalist"...',
+    aboutP1: 'I am a fourth-year Information Technology student specializing in Cybersecurity. During my studies, I focus on building a solid foundation in computer networks, operating systems, and security principles, while developing analytical thinking and problem-solving skills through coursework and practical projects.',
+    aboutP2: 'I am interested in building secure and reliable systems, from network and web application security to identifying and mitigating security risks. My goal is to continue learning, gain practical experience, and gradually grow within the field of information security.',
     blogTitle: 'Network Blog.',
     blogDesc: 'Sharing knowledge about protocols, infrastructure, and real-world network programming experiences.',
     achTitle: 'Achievements.',
@@ -270,7 +393,7 @@ export const TRANSLATIONS = {
     contactDesc: "I'm always open to discussing network projects, internship opportunities, or just a tech chat.",
     phone: 'Phone Number',
     email: 'Personal Email',
-    copyright: '© 2025 Nguyễn Thị Thanh Thảo. Inspired by Apple Minimalism.',
+    copyright: '© 2025 Nguyễn Thị Thanh Thảo.',
     searchPlaceholder: 'Search articles...',
     back: 'Back',
     readMore: 'Read More',

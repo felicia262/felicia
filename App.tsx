@@ -120,7 +120,7 @@ const App: React.FC = () => {
           <button onClick={() => setActivePost(null)} className="text-blue-600 font-medium flex items-center gap-2">
             <span>← {t.back}</span>
           </button>
-          <div className="font-bold text-xl tracking-tighter">A.</div>
+          <div className="font-bold text-xl tracking-tighter">COER.</div>
           <div className="w-20"></div>
         </div>
       </nav>
@@ -188,7 +188,7 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="mt-24 w-full max-w-5xl fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <img src="https://picsum.photos/seed/setup/1200/600" alt="Workspace" className="rounded-3xl shadow-2xl w-full object-cover h-[400px]" />
+                <img src="/images/martin_1.jpg" alt="Workspace" className="rounded-3xl shadow-2xl w-full object-cover h-[400px]" />
               </div>
             </section>
 
