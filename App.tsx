@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import BlogCard from './components/BlogCard';
 import AchievementCard from './components/AchievementCard';
 import { BLOG_POSTS, ACHIEVEMENTS, SOCIAL_LINKS, CONTACT_INFO, TRANSLATIONS } from './constants';
 import { BlogPost, Achievement, Language } from './types';
+
+type View = 'home' | 'blog' | 'achievements';
 
 const SocialIcon = ({ name }: { name: string }) => {
   switch (name) {
@@ -19,12 +20,17 @@ const SocialIcon = ({ name }: { name: string }) => {
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('vi');
+  const [view, setView] = useState<View>('home');
   const [activePost, setActivePost] = useState<BlogPost | null>(null);
   const [activeAchievement, setActiveAchievement] = useState<Achievement | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   const t = TRANSLATIONS[lang];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [view, activePost, activeAchievement]);
 
   useEffect(() => {
     if (activePost || activeAchievement || searchOpen) {
@@ -38,9 +44,18 @@ const App: React.FC = () => {
     setActivePost(null);
     setActiveAchievement(null);
     setSearchOpen(false);
-    const element = document.getElementById(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    // Simple state routing
+    if (href === 'home' || href === 'about' || href === 'contact') {
+      setView('home');
+      setTimeout(() => {
+        const element = document.getElementById(href);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else if (href === 'blog') {
+      setView('blog');
+    } else if (href === 'achievements') {
+      setView('achievements');
     }
   };
 
@@ -54,15 +69,11 @@ const App: React.FC = () => {
 
   const SearchOverlay = () => (
     <div className="fixed inset-0 z-[200] apple-blur animate-in fade-in duration-300 flex flex-col items-center pt-32 px-6">
-      <button 
-        onClick={() => { setSearchOpen(false); setSearchQuery(''); }}
-        className="absolute top-10 right-10 text-gray-500 hover:text-black"
-      >
+      <button onClick={() => { setSearchOpen(false); setSearchQuery(''); }} className="absolute top-10 right-10 text-gray-500 hover:text-black">
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-
       <div className="w-full max-w-2xl">
         <div className="relative mb-12">
           <input 
@@ -74,25 +85,15 @@ const App: React.FC = () => {
             className="w-full bg-transparent border-b-2 border-gray-200 py-4 text-4xl font-bold tracking-tight focus:outline-none focus:border-black transition-colors"
           />
         </div>
-
         <div className="space-y-8 max-h-[60vh] overflow-y-auto pr-4 custom-scroll">
           {searchQuery && filteredPosts.map(post => (
-            <div 
-              key={post.id} 
-              onClick={() => { setActivePost(post); setSearchOpen(false); setSearchQuery(''); }}
-              className="group cursor-pointer p-6 bg-white/50 rounded-3xl hover:bg-white hover:shadow-xl transition-all"
-            >
+            <div key={post.id} onClick={() => { setActivePost(post); setSearchOpen(false); setSearchQuery(''); }} className="group cursor-pointer p-6 bg-white/50 rounded-3xl hover:bg-white hover:shadow-xl transition-all">
               <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2 block">{post.category}</span>
               <h4 className="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{post.title}</h4>
               <p className="text-gray-500 line-clamp-2">{post.excerpt}</p>
             </div>
           ))}
-
-          {searchQuery && filteredPosts.length === 0 && (
-            <p className="text-center text-gray-400 text-xl">
-              {t.noResults} "{searchQuery}"
-            </p>
-          )}
+          {searchQuery && filteredPosts.length === 0 && <p className="text-center text-gray-400 text-xl">{t.noResults} "{searchQuery}"</p>}
         </div>
       </div>
     </div>
@@ -112,11 +113,7 @@ const App: React.FC = () => {
       <div className="max-w-3xl mx-auto px-6 py-20">
         <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-4 block text-center">{post.category}</span>
         <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-tight mb-8 text-center">{post.title}</h1>
-        <div className="flex items-center justify-center gap-4 mb-12 text-gray-400 text-sm">
-          <span>{post.date}</span>
-          <span>•</span>
-          <span>5 min read</span>
-        </div>
+        <div className="flex items-center justify-center gap-4 mb-12 text-gray-400 text-sm"><span>{post.date}</span><span>•</span><span>5 min read</span></div>
         <img src={post.image} alt={post.title} className="w-full aspect-video object-cover rounded-3xl mb-12 shadow-lg" />
         <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
           {post.content.split('\n').map((para, i) => <p key={i} className="mb-6">{para}</p>)}
@@ -155,91 +152,116 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-blue-100">
-      <Navbar 
-        onNavClick={handleNavClick} 
-        language={lang} 
-        setLanguage={setLang}
-        onSearchOpen={() => setSearchOpen(true)}
-      />
+      <Navbar onNavClick={handleNavClick} language={lang} setLanguage={setLang} onSearchOpen={() => setSearchOpen(true)} />
       
       <main>
-        {/* Hero */}
-        <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-white px-6 pt-12 overflow-hidden">
-          <div className="max-w-4xl text-center fade-in-up">
-            <h2 className="text-lg md:text-xl font-medium text-blue-600 mb-4 tracking-tight">{t.heroSub}</h2>
-            <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none mb-8">{t.heroTitle}</h1>
-            <p className="text-xl md:text-3xl text-gray-500 font-normal leading-relaxed max-w-2xl mx-auto mb-12">{t.heroDesc}</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button onClick={() => handleNavClick('about')} className="px-8 py-3 bg-[#0071e3] text-white rounded-full font-medium hover:bg-[#0077ed] transition-colors">{t.explore}</button>
-              <button onClick={() => handleNavClick('blog')} className="text-[#0066cc] font-medium hover:underline flex items-center gap-1 group">
-                {t.viewBlog} <span className="group-hover:translate-x-1 transition-transform">→</span>
-              </button>
-            </div>
-          </div>
-          <div className="mt-24 w-full max-w-5xl fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <img 
-              src="https://picsum.photos/seed/setup/1200/600" 
-              alt="Workspace" 
-              className="rounded-3xl shadow-2xl w-full object-cover h-[400px]"
-            />
-          </div>
-        </section>
-
-        {/* About */}
-        <section id="about" className="py-24 px-6 bg-[#f5f5f7]">
-          <div className="max-w-4xl mx-auto text-center md:text-left">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-12">{t.aboutTitle}</h2>
-            <div className="grid md:grid-cols-2 gap-12 text-lg text-gray-600 leading-relaxed text-left">
-              <p>{t.aboutP1}</p>
-              <p>{t.aboutP2}</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Blog */}
-        <section id="blog" className="py-24 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">{t.blogTitle}</h2>
-              <p className="text-gray-500 max-w-sm">{t.blogDesc}</p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-              {BLOG_POSTS[lang].map((post, index) => (
-                <div key={post.id} onClick={() => setActivePost(post)} className="cursor-pointer">
-                  <BlogCard post={post} index={index} />
+        {view === 'home' && (
+          <>
+            <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-white px-6 pt-12 overflow-hidden">
+              <div className="max-w-4xl text-center fade-in-up">
+                <h2 className="text-lg md:text-xl font-medium text-blue-600 mb-4 tracking-tight">{t.heroSub}</h2>
+                <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none mb-8">{t.heroTitle}</h1>
+                <p className="text-xl md:text-3xl text-gray-500 font-normal leading-relaxed max-w-2xl mx-auto mb-12">{t.heroDesc}</p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                  <button onClick={() => { setView('blog'); }} className="px-8 py-3 bg-[#0071e3] text-white rounded-full font-medium hover:bg-[#0077ed] transition-colors">{t.viewBlog}</button>
+                  <button onClick={() => { setView('achievements'); }} className="text-[#0066cc] font-medium hover:underline flex items-center gap-1 group">{t.achTitle} <span className="group-hover:translate-x-1 transition-transform">→</span></button>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
+              </div>
+              <div className="mt-24 w-full max-w-5xl fade-in-up" style={{ animationDelay: '0.2s' }}>
+                <img src="https://picsum.photos/seed/setup/1200/600" alt="Workspace" className="rounded-3xl shadow-2xl w-full object-cover h-[400px]" />
+              </div>
+            </section>
 
-        {/* Achievements */}
-        <section id="achievements" className="py-24 px-6 bg-black text-white">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-16">{t.achTitle}</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {ACHIEVEMENTS[lang].map((item, index) => (
-                <AchievementCard key={item.id} item={item} index={index} onClick={() => setActiveAchievement(item)} />
-              ))}
-            </div>
-          </div>
-        </section>
+            <section id="about" className="py-24 px-6 bg-[#f5f5f7]">
+              <div className="max-w-4xl mx-auto text-center md:text-left">
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-12">{t.aboutTitle}</h2>
+                <div className="grid md:grid-cols-2 gap-12 text-lg text-gray-600 leading-relaxed text-left">
+                  <p>{t.aboutP1}</p><p>{t.aboutP2}</p>
+                </div>
+              </div>
+            </section>
 
-        {/* Contact */}
-        <section id="contact" className="py-32 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-12">{t.contactTitle}</h2>
-            <p className="text-xl text-gray-500 mb-16 max-w-2xl mx-auto">{t.contactDesc}</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {SOCIAL_LINKS.map((link) => (
-                <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center p-8 bg-[#f5f5f7] rounded-[32px] transition-all duration-300 hover:bg-white hover:shadow-2xl hover:-translate-y-2">
-                  <div className="mb-4 text-gray-400 group-hover:text-black transition-colors"><SocialIcon name={link.name} /></div>
-                  <span className="font-semibold text-gray-900">{link.name}</span>
-                </a>
-              ))}
+            <section className="py-24 px-6">
+              <div className="max-w-6xl mx-auto">
+                <div className="flex items-end justify-between mb-16">
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">{t.blogTitle}</h2>
+                  <button onClick={() => setView('blog')} className="text-blue-600 font-semibold hover:underline">{t.readMore} →</button>
+                </div>
+                <div className="grid md:grid-cols-3 gap-8 items-stretch">
+                  {BLOG_POSTS[lang].slice(0, 3).map((post, index) => (
+                    <div key={post.id} onClick={() => setActivePost(post)} className="cursor-pointer">
+                      <BlogCard post={post} index={index} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="py-24 px-6 bg-black text-white">
+              <div className="max-w-6xl mx-auto">
+                <div className="flex items-end justify-between mb-16">
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">{t.achTitle}</h2>
+                  <button onClick={() => setView('achievements')} className="text-white opacity-80 hover:opacity-100 font-semibold underline">{t.viewDetails} →</button>
+                </div>
+                <div className="grid md:grid-cols-3 gap-8">
+                  {ACHIEVEMENTS[lang].slice(0, 3).map((item, index) => (
+                    <AchievementCard key={item.id} item={item} index={index} onClick={() => setActiveAchievement(item)} />
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section id="contact" className="py-32 px-6">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-12">{t.contactTitle}</h2>
+                <p className="text-xl text-gray-500 mb-16 max-w-2xl mx-auto">{t.contactDesc}</p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  {SOCIAL_LINKS.map((link) => (
+                    <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center p-8 bg-[#f5f5f7] rounded-[32px] transition-all duration-300 hover:bg-white hover:shadow-2xl hover:-translate-y-2">
+                      <div className="mb-4 text-gray-400 group-hover:text-black transition-colors"><SocialIcon name={link.name} /></div>
+                      <span className="font-semibold text-gray-900">{link.name}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
+        {view === 'blog' && (
+          <section className="py-32 px-6 min-h-screen">
+            <div className="max-w-6xl mx-auto">
+              <div className="mb-16">
+                <button onClick={() => setView('home')} className="text-blue-600 mb-4 flex items-center gap-2">← {t.back}</button>
+                <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">{t.blogTitle}</h2>
+                <p className="text-2xl text-gray-500">{t.blogDesc}</p>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                {BLOG_POSTS[lang].map((post, index) => (
+                  <div key={post.id} onClick={() => setActivePost(post)} className="cursor-pointer">
+                    <BlogCard post={post} index={index} />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
+
+        {view === 'achievements' && (
+          <section className="py-32 px-6 bg-black text-white min-h-screen">
+            <div className="max-w-6xl mx-auto">
+              <div className="mb-16">
+                <button onClick={() => setView('home')} className="text-blue-400 mb-4 flex items-center gap-2">← {t.back}</button>
+                <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">{t.achTitle}</h2>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {ACHIEVEMENTS[lang].map((item, index) => (
+                  <AchievementCard key={item.id} item={item} index={index} onClick={() => setActiveAchievement(item)} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       <footer className="py-20 px-6 border-t border-gray-100 bg-[#fbfbfd]">
@@ -252,14 +274,8 @@ const App: React.FC = () => {
             <div className="col-span-1 md:col-start-3">
               <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">{t.email}</h4>
               <ul className="space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-widest text-gray-400">{t.phone}</span>
-                  <a href={`tel:${CONTACT_INFO.phone}`} className="text-lg font-medium hover:text-blue-600 transition-colors">{CONTACT_INFO.phone}</a>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-widest text-gray-400">{t.email}</span>
-                  <a href={`mailto:${CONTACT_INFO.email}`} className="text-lg font-medium hover:text-blue-600 transition-colors">{CONTACT_INFO.email}</a>
-                </li>
+                <li className="flex flex-col"><span className="text-[10px] uppercase tracking-widest text-gray-400">{t.phone}</span><a href={`tel:${CONTACT_INFO.phone}`} className="text-lg font-medium hover:text-blue-600 transition-colors">{CONTACT_INFO.phone}</a></li>
+                <li className="flex flex-col"><span className="text-[10px] uppercase tracking-widest text-gray-400">{t.email}</span><a href={`mailto:${CONTACT_INFO.email}`} className="text-lg font-medium hover:text-blue-600 transition-colors">{CONTACT_INFO.email}</a></li>
               </ul>
             </div>
           </div>
