@@ -40,28 +40,30 @@ const App: React.FC = () => {
     }
   }, [activePost, activeAchievement, searchOpen]);
 
+  const scrollToId = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 60;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const handleNavClick = (href: string) => {
     setActivePost(null);
     setActiveAchievement(null);
     setSearchOpen(false);
     
-    if (href === 'home' || href === 'about' || href === 'contact') {
+    if (href === 'home' || href === 'about' || href === 'contact' || href === 'blog-home') {
       setView('home');
-      setTimeout(() => {
-        const element = document.getElementById(href);
-        if (element) {
-          const offset = 60;
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const elementRect = element.getBoundingClientRect().top;
-          const elementPosition = elementRect - bodyRect;
-          const offsetPosition = elementPosition - offset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }, 150);
+      setTimeout(() => scrollToId(href === 'blog-home' ? 'blog-home' : href), 150);
     } else if (href === 'blog') {
       setView('blog');
     } else if (href === 'achievements') {
@@ -181,8 +183,8 @@ const App: React.FC = () => {
                 <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none mb-8">{t.heroTitle}</h1>
                 <p className="text-xl md:text-3xl text-gray-500 font-normal leading-relaxed max-w-2xl mx-auto mb-12">{t.heroDesc}</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                  <button onClick={() => { setView('blog'); }} className="px-8 py-3 bg-[#0071e3] text-white rounded-full font-medium hover:bg-[#0077ed] transition-colors">{t.viewBlog}</button>
-                  <button onClick={() => { setView('achievements'); }} className="text-[#0066cc] font-medium hover:underline flex items-center gap-1 group">{t.achTitle} <span className="group-hover:translate-x-1 transition-transform">→</span></button>
+                  <button onClick={() => scrollToId('about')} className="px-8 py-3 bg-[#0071e3] text-white rounded-full font-medium hover:bg-[#0077ed] transition-colors">{t.explore}</button>
+                  <button onClick={() => scrollToId('blog-home')} className="text-[#0066cc] font-medium hover:underline flex items-center gap-1 group">{t.viewBlog} <span className="group-hover:translate-x-1 transition-transform">→</span></button>
                 </div>
               </div>
               <div className="mt-24 w-full max-w-5xl fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -199,7 +201,7 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            <section className="py-32 px-6">
+            <section id="blog-home" className="py-32 px-6">
               <div className="max-w-6xl mx-auto">
                 <div className="flex items-end justify-between mb-16">
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">{t.blogTitle}</h2>
@@ -215,7 +217,7 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            <section className="py-32 px-6 bg-black text-white">
+            <section id="achievements-home" className="py-32 px-6 bg-black text-white">
               <div className="max-w-6xl mx-auto">
                 <div className="flex items-end justify-between mb-16">
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">{t.achTitle}</h2>
