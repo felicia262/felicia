@@ -1,0 +1,23 @@
+export const EN = {
+  heroSub: "Hi, I'm",
+  heroTitle: 'Nguyễn Thị Thanh Thảo.',
+  heroDesc: 'IT Student passionate about network infrastructure and minimalist application development.',
+  explore: 'Explore More',
+  viewBlog: 'View my blog',
+  aboutTitle: 'About me.',
+  aboutP1: 'I am a fourth-year Information Technology student specializing in Cybersecurity. During my studies, I focus on building a solid foundation in computer networks, operating systems, and security principles, while developing analytical thinking and problem-solving skills through coursework and practical projects.',
+  aboutP2: 'I am interested in building secure and reliable systems, from network and web application security to identifying and mitigating security risks. My goal is to continue learning, gain practical experience, and gradually grow within the field of information security.',
+  blogTitle: 'Network Blog.',
+  blogDesc: 'Sharing knowledge about protocols, infrastructure, and real-world network programming experiences.',
+  achTitle: 'Achievements.',
+  contactTitle: "Let's connect.",
+  contactDesc: "I'm always open to discussing network projects, internship opportunities, or just a tech chat.",
+  phone: 'Phone Number',
+  email: 'Personal Email',
+  copyright: '© 2025 Nguyễn Thị Thanh Thảo.',
+  searchPlaceholder: 'Search articles...',
+  back: 'Back',
+  readMore: 'Read More',
+  viewDetails: 'View Details',
+  noResults: 'No results found for'
+};

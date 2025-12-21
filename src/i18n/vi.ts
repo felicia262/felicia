@@ -1,0 +1,23 @@
+export const VI = {
+  heroSub: 'Xin chào, mình là',
+  heroTitle: 'Nguyễn Thị Thanh Thảo.',
+  heroDesc: 'Sinh viên Công nghệ Thông tin đam mê hạ tầng mạng và lập trình ứng dụng.',
+  explore: 'Khám phá thêm',
+  viewBlog: 'Xem blog của mình',
+  aboutTitle: 'Về mình.',
+  aboutP1: 'Mình là sinh viên năm 4 ngành Công nghệ Thông tin, chuyên ngành An ninh mạng. Trong quá trình học tập, mình tập trung vào việc nắm vững kiến thức nền tảng về mạng máy tính, hệ điều hành và các nguyên lý bảo mật, đồng thời rèn luyện tư duy phân tích và giải quyết vấn đề thông qua các bài tập và đồ án thực hành.',
+  aboutP2: 'Mình quan tâm đến việc xây dựng hệ thống an toàn và ổn định, từ bảo mật mạng, ứng dụng web đến cách phát hiện và xử lý các rủi ro an ninh. Mục tiêu của mình là tiếp tục học hỏi, tích lũy kinh nghiệm thực tế và từng bước phát triển trong lĩnh vực an toàn thông tin.',
+  blogTitle: 'Blog Mạng.',
+  blogDesc: 'Chia sẻ kiến thức về giao thức, hạ tầng và những trải nghiệm thực tế trong lập trình mạng.',
+  achTitle: 'Thành tựu.',
+  contactTitle: 'Hãy cùng kết nối.',
+  contactDesc: 'Mình luôn sẵn sàng thảo luận về các dự án mạng, cơ hội thực tập hoặc chỉ là một cuộc trò chuyện về công nghệ.',
+  phone: 'Số điện thoại',
+  email: 'Email cá nhân',
+  copyright: '© 2025 Nguyễn Thị Thanh Thảo.',
+  searchPlaceholder: 'Tìm kiếm bài viết...',
+  back: 'Quay lại',
+  readMore: 'Đọc tiếp',
+  viewDetails: 'Xem chi tiết',
+  noResults: 'Không tìm thấy kết quả nào cho'
+};

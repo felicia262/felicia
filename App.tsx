@@ -32,6 +32,51 @@ const App: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [view, activePost, activeAchievement]);
 
+  // On mount / hash change: support shareable links like /#blog or /#achievements
+  useEffect(() => {
+    const handleInitialHash = () => {
+      const raw = window.location.hash.replace('#', '').toLowerCase();
+      if (!raw) return;
+
+      // Support new format: blog/post-<id>  and keep backwards compat with post-<id>
+      if (raw.startsWith('blog/post-') || raw.startsWith('blog/post:') || raw.startsWith('post-') || raw.startsWith('post:')) {
+        let id = raw;
+        if (id.startsWith('blog/post-') || id.startsWith('blog/post:')) {
+          id = id.replace(/^blog\/post[-:]/, '');
+        } else {
+          id = id.replace(/^post[-:]/, '');
+        }
+
+        const findPost = (idToFind: string) => {
+          const all = [...BLOG_POSTS.vi, ...BLOG_POSTS.en];
+          return all.find(p => p.id.toLowerCase() === idToFind.toLowerCase()) || null;
+        };
+        const post = findPost(id);
+        if (post) {
+          setView('home');
+          setTimeout(() => setActivePost(post), 150);
+          return;
+        }
+      }
+
+      if (raw === 'blog' || raw === 'blogs' || raw === 'projects') {
+        setView('home');
+        setTimeout(() => scrollToId('blog'), 150);
+      } else if (raw === 'achievements' || raw === 'achievement') {
+        setView('home');
+        setTimeout(() => scrollToId('achievements'), 150);
+      } else {
+        setView('home');
+        setTimeout(() => scrollToId(raw), 150);
+      }
+    };
+
+    handleInitialHash();
+    const onHash = () => handleInitialHash();
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
   useEffect(() => {
     if (activePost || activeAchievement || searchOpen) {
       document.body.style.overflow = 'hidden';
@@ -60,15 +105,19 @@ const App: React.FC = () => {
     setActivePost(null);
     setActiveAchievement(null);
     setSearchOpen(false);
-    
-    if (href === 'home' || href === 'about' || href === 'contact' || href === 'blog-home') {
+    // For blog/achievements we keep one-page behavior and use anchors so links can be shared
+    if (href === 'home' || href === 'about' || href === 'contact' || href === 'blog' || href === 'achievements' || href === 'blog-home' || href === 'achievements-home') {
+      const target = href === 'blog-home' ? 'blog' : (href === 'achievements-home' ? 'achievements' : href);
       setView('home');
-      setTimeout(() => scrollToId(href === 'blog-home' ? 'blog-home' : href), 150);
-    } else if (href === 'blog') {
-      setView('blog');
-    } else if (href === 'achievements') {
-      setView('achievements');
+      // update URL hash so link is shareable
+      try { history.pushState(null, '', `#${target}`); } catch (e) { window.location.hash = `#${target}`; }
+      setTimeout(() => scrollToId(target), 150);
     }
+  };
+
+  const openPost = (post: BlogPost) => {
+    try { history.pushState(null, '', `#blog/post-${post.id}`); } catch (e) { window.location.hash = `#blog/post-${post.id}`; }
+    setActivePost(post);
   };
 
   const filteredPosts = useMemo(() => {
@@ -101,7 +150,7 @@ const App: React.FC = () => {
         </div>
         <div className="space-y-8 max-h-[60vh] overflow-y-auto pr-4 custom-scroll">
           {searchQuery && filteredPosts.map(post => (
-            <div key={post.id} onClick={() => { setActivePost(post); setSearchOpen(false); setSearchQuery(''); }} className="group cursor-pointer p-6 bg-white/50 rounded-3xl hover:bg-white hover:shadow-xl transition-all">
+            <div key={post.id} onClick={() => { openPost(post); setSearchOpen(false); setSearchQuery(''); }} className="group cursor-pointer p-6 bg-white/50 rounded-3xl hover:bg-white hover:shadow-xl transition-all">
               <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2 block">{post.category}</span>
               <h4 className="text-2xl font-bold mb-2 group-hover:text-blue-600 transition-colors">{post.title}</h4>
               <p className="text-gray-500 line-clamp-2">{post.excerpt}</p>
@@ -117,7 +166,7 @@ const App: React.FC = () => {
     <div className="fixed inset-0 z-[100] bg-white overflow-y-auto animate-in fade-in duration-500">
       <nav className="sticky top-0 w-full apple-blur border-b border-gray-100 z-10">
         <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-          <button onClick={() => setActivePost(null)} className="text-blue-600 font-medium flex items-center gap-2">
+          <button onClick={() => { try { history.pushState(null, '', '#blog'); } catch(e) { window.location.hash = '#blog'; } setActivePost(null); }} className="text-blue-600 font-medium flex items-center gap-2">
             <span>← {t.back}</span>
           </button>
           <div className="font-bold text-xl tracking-tighter">COER.</div>
@@ -184,7 +233,7 @@ const App: React.FC = () => {
                 <p className="text-xl md:text-3xl text-gray-500 font-normal leading-relaxed max-w-2xl mx-auto mb-12">{t.heroDesc}</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                   <button onClick={() => scrollToId('about')} className="px-8 py-3 bg-[#0071e3] text-white rounded-full font-medium hover:bg-[#0077ed] transition-colors">{t.explore}</button>
-                  <button onClick={() => scrollToId('blog-home')} className="text-[#0066cc] font-medium hover:underline flex items-center gap-1 group">{t.viewBlog} <span className="group-hover:translate-x-1 transition-transform">→</span></button>
+                  <button onClick={() => { try { history.pushState(null, '', '#blog'); } catch(e) { window.location.hash = '#blog'; } scrollToId('blog'); }} className="text-[#0066cc] font-medium hover:underline flex items-center gap-1 group">{t.viewBlog} <span className="group-hover:translate-x-1 transition-transform">→</span></button>
                 </div>
               </div>
               <div className="mt-24 w-full max-w-5xl fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -201,7 +250,7 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            <section id="blog-home" className="py-32 px-6">
+            <section id="blog" className="py-32 px-6">
               <div className="max-w-6xl mx-auto">
                 <div className="flex items-end justify-between mb-16">
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">{t.blogTitle}</h2>
@@ -209,7 +258,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 items-stretch">
                   {BLOG_POSTS[lang].slice(0, 3).map((post, index) => (
-                    <div key={post.id} onClick={() => setActivePost(post)} className="cursor-pointer">
+                    <div key={post.id} onClick={() => openPost(post)} className="cursor-pointer">
                       <BlogCard post={post} index={index} />
                     </div>
                   ))}
@@ -217,7 +266,7 @@ const App: React.FC = () => {
               </div>
             </section>
 
-            <section id="achievements-home" className="py-32 px-6 bg-black text-white">
+            <section id="achievements" className="py-32 px-6 bg-black text-white">
               <div className="max-w-6xl mx-auto">
                 <div className="flex items-end justify-between mb-16">
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">{t.achTitle}</h2>
@@ -258,7 +307,7 @@ const App: React.FC = () => {
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                 {BLOG_POSTS[lang].map((post, index) => (
-                  <div key={post.id} onClick={() => setActivePost(post)} className="cursor-pointer">
+                  <div key={post.id} onClick={() => openPost(post)} className="cursor-pointer">
                     <BlogCard post={post} index={index} />
                   </div>
                 ))}
