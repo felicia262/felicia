@@ -19,12 +19,11 @@ export const NAV_ITEMS: Record<Language, NavItem[]> = {
 };
 
 export const CONTACT_INFO = {
-  phone: '090 123 4567',
-  email: 'nguyenvana.it@gmail.com',
+  phone: '0899923998',
+  email: 'Felicia.nguyenthanh@gmail.com',
   address: 'Hồ Chí Minh, Việt Nam'
 };
 
-// Fix: Added SOCIAL_LINKS which was missing and causing a compilation error in App.tsx
 export const SOCIAL_LINKS = [
   { name: 'GitHub', url: 'https://github.com' },
   { name: 'LinkedIn', url: 'https://linkedin.com' },
@@ -234,22 +233,22 @@ export const ACHIEVEMENTS: Record<Language, Achievement[]> = {
 
 export const TRANSLATIONS = {
   vi: {
-    heroSub: 'Xin chào, tôi là',
-    heroTitle: 'Nguyễn Văn A.',
+    heroSub: 'Xin chào, mình là',
+    heroTitle: 'Nguyễn Thị Thanh Thảo.',
     heroDesc: 'Sinh viên Công nghệ Thông tin đam mê hạ tầng mạng và lập trình ứng dụng tối giản.',
     explore: 'Khám phá thêm',
-    viewBlog: 'Xem blog của tôi',
-    aboutTitle: 'Về tôi.',
-    aboutP1: 'Tôi là một sinh viên CNTT đam mê khám phá sự giao thoa giữa phần cứng và phần mềm...',
-    aboutP2: 'Phương châm của tôi là "Làm cho nó hoạt động, sau đó làm cho nó tối giản"...',
+    viewBlog: 'Xem blog của mình',
+    aboutTitle: 'Về mình.',
+    aboutP1: 'Mình là một sinh viên CNTT đam mê khám phá sự giao thoa giữa phần cứng và phần mềm...',
+    aboutP2: 'Phương châm của mình là "Làm cho nó hoạt động, sau đó làm cho nó tối giản"...',
     blogTitle: 'Blog Mạng.',
     blogDesc: 'Chia sẻ kiến thức về giao thức, hạ tầng và những trải nghiệm thực tế trong lập trình mạng.',
     achTitle: 'Thành tựu.',
     contactTitle: 'Hãy cùng kết nối.',
-    contactDesc: 'Tôi luôn sẵn sàng thảo luận về các dự án mạng, cơ hội thực tập hoặc chỉ là một cuộc trò chuyện về công nghệ.',
+    contactDesc: 'Mình luôn sẵn sàng thảo luận về các dự án mạng, cơ hội thực tập hoặc chỉ là một cuộc trò chuyện về công nghệ.',
     phone: 'Số điện thoại',
     email: 'Email cá nhân',
-    copyright: '© 2024 Nguyễn Văn A. Thiết kế lấy cảm hứng từ sự tối giản của Apple.',
+    copyright: '© 2024 Nguyễn Thị Thanh Thảo. Thiết kế lấy cảm hứng từ sự tối giản của Apple.',
     searchPlaceholder: 'Tìm kiếm bài viết...',
     back: 'Quay lại',
     readMore: 'Đọc tiếp',
@@ -258,7 +257,7 @@ export const TRANSLATIONS = {
   },
   en: {
     heroSub: "Hi, I'm",
-    heroTitle: 'Nguyen Van A.',
+    heroTitle: 'Nguyễn Thị Thanh Thảo.',
     heroDesc: 'IT Student passionate about network infrastructure and minimalist application development.',
     explore: 'Explore More',
     viewBlog: 'View my blog',
@@ -272,7 +271,7 @@ export const TRANSLATIONS = {
     contactDesc: "I'm always open to discussing network projects, internship opportunities, or just a tech chat.",
     phone: 'Phone Number',
     email: 'Personal Email',
-    copyright: '© 2024 Nguyen Van A. Inspired by Apple Minimalism.',
+    copyright: '© 2024 Nguyễn Thị Thanh Thảo. Inspired by Apple Minimalism.',
     searchPlaceholder: 'Search articles...',
     back: 'Back',
     readMore: 'Read More',
