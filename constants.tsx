@@ -26,7 +26,6 @@ export const CONTACT_INFO = {
 
 export const SOCIAL_LINKS = [
   { name: 'GitHub', url: 'https://github.com' },
-  { name: 'LinkedIn', url: 'https://linkedin.com' },
   { name: 'Facebook', url: 'https://facebook.com' },
   { name: 'Instagram', url: 'https://instagram.com' }
 ];
@@ -235,7 +234,7 @@ export const TRANSLATIONS = {
   vi: {
     heroSub: 'Xin chào, mình là',
     heroTitle: 'Nguyễn Thị Thanh Thảo.',
-    heroDesc: 'Sinh viên Công nghệ Thông tin đam mê hạ tầng mạng và lập trình ứng dụng tối giản.',
+    heroDesc: 'Sinh viên Công nghệ Thông tin đam mê hạ tầng mạng và lập trình ứng dụng.',
     explore: 'Khám phá thêm',
     viewBlog: 'Xem blog của mình',
     aboutTitle: 'Về mình.',
@@ -248,7 +247,7 @@ export const TRANSLATIONS = {
     contactDesc: 'Mình luôn sẵn sàng thảo luận về các dự án mạng, cơ hội thực tập hoặc chỉ là một cuộc trò chuyện về công nghệ.',
     phone: 'Số điện thoại',
     email: 'Email cá nhân',
-    copyright: '© 2024 Nguyễn Thị Thanh Thảo. Thiết kế lấy cảm hứng từ sự tối giản của Apple.',
+    copyright: '© 2025 Nguyễn Thị Thanh Thảo. Thiết kế lấy cảm hứng từ sự tối giản của Apple.',
     searchPlaceholder: 'Tìm kiếm bài viết...',
     back: 'Quay lại',
     readMore: 'Đọc tiếp',
@@ -271,7 +270,7 @@ export const TRANSLATIONS = {
     contactDesc: "I'm always open to discussing network projects, internship opportunities, or just a tech chat.",
     phone: 'Phone Number',
     email: 'Personal Email',
-    copyright: '© 2024 Nguyễn Thị Thanh Thảo. Inspired by Apple Minimalism.',
+    copyright: '© 2025 Nguyễn Thị Thanh Thảo. Inspired by Apple Minimalism.',
     searchPlaceholder: 'Search articles...',
     back: 'Back',
     readMore: 'Read More',
