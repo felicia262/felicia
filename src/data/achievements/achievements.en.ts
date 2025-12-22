@@ -4,11 +4,10 @@ export const ACHIEVEMENTS_EN: Achievement[] = [
   {
     id: 'a1',
     title: 'CTF Competition – The Maze Of Shadows',
-    description: `
-      The Maze Of Shadows is a challenging Capture The Flag (CTF) competition that focuses on information security skills and problem-solving thinking. The competition is designed as a “maze of shadows,” where participants must overcome a series of challenges across multiple domains, including Cryptography, Web Security, Reverse Engineering, Forensics, and Pwn.
-
-      Through participating in the competition, I strengthened my vulnerability analysis skills, logical thinking, and ability to work under time pressure, as well as my capability to search for and exploit hidden information within systems. The competition not only reinforced my foundational knowledge of cybersecurity but also enhanced my teamwork skills and self-learning ability when facing complex and unfamiliar problems.
-      `,
+    description: [
+      'The Maze Of Shadows is a challenging Capture The Flag (CTF) competition that focuses on information security skills and problem-solving thinking. The competition is designed as a "maze of shadows," where participants must overcome a series of challenges across multiple domains, including Cryptography, Web Security, Reverse Engineering, Forensics, and Pwn.',
+      'Through participating in the competition, I strengthened my vulnerability analysis skills, logical thinking, and ability to work under time pressure, as well as my capability to search for and exploit hidden information within systems. The competition not only reinforced my foundational knowledge of cybersecurity but also enhanced my teamwork skills and self-learning ability when facing complex and unfamiliar problems.',
+    ],
     type: 'Competition',
     image: 'images/cttf.jpg',
     images: [
@@ -22,11 +21,10 @@ export const ACHIEVEMENTS_EN: Achievement[] = [
   {
     id: 'a2',
     title: 'Final Round – "Students with Information Security 2025" Competition',
-    description: `
-      The Final Round of the "Students with Information Security 2025" competition represents a key stage where the most outstanding teams are selected after the preliminary rounds. The competition evaluates both fundamental knowledge and practical skills in information security, including vulnerability analysis, system security, network security, and real-world attack scenario handling.
-
-      By participating in the final round, I had the opportunity to apply theoretical knowledge to practical challenges, improving my analytical thinking, teamwork abilities, and problem-solving skills under time constraints. This experience played an important role in strengthening my commitment to pursuing a career in information security.
-      `,
+    description: [
+      'The Final Round of the "Students with Information Security 2025" competition represents a key stage where the most outstanding teams are selected after the preliminary rounds. The competition evaluates both fundamental knowledge and practical skills in information security, including vulnerability analysis, system security, network security, and real-world attack scenario handling.',
+      'By participating in the final round, I had the opportunity to apply theoretical knowledge to practical challenges, improving my analytical thinking, teamwork abilities, and problem-solving skills under time constraints. This experience played an important role in strengthening my commitment to pursuing a career in information security.',
+    ],
 
     type: 'Competition',
     image: 'images/lGnIlP.jpg',

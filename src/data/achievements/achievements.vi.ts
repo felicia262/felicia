@@ -4,11 +4,10 @@ export const ACHIEVEMENTS_VI: Achievement[] = [
   {
     id: 'a1',
     title: 'Cuộc thi CTF - The Maze Of Shadows',
-    description: `
-      The Maze Of Shadows là một cuộc thi CTF (Capture The Flag) mang tính thử thách cao, tập trung vào các kỹ năng an toàn thông tin và tư duy giải quyết vấn đề. Cuộc thi được thiết kế như một “mê cung bóng tối”, nơi người tham gia phải lần lượt vượt qua các thử thách thuộc nhiều lĩnh vực khác nhau như Cryptography, Web Security, Reverse Engineering, Forensics và Pwn.
-
-      Trong quá trình tham gia, tôi đã rèn luyện khả năng phân tích lỗ hổng, tư duy logic, làm việc dưới áp lực thời gian, cũng như kỹ năng tìm kiếm và khai thác thông tin ẩn trong hệ thống. Cuộc thi không chỉ giúp tôi củng cố kiến thức nền tảng về an ninh mạng mà còn nâng cao tinh thần làm việc nhóm và khả năng tự học, tự nghiên cứu khi đối mặt với những bài toán mới và khó.
-      `,
+    description: [
+      'The Maze Of Shadows là một cuộc thi CTF (Capture The Flag) mang tính thử thách cao, tập trung vào các kỹ năng an toàn thông tin và tư duy giải quyết vấn đề. Cuộc thi được thiết kế như một "mê cung bóng tối", nơi người tham gia phải lần lượt vượt qua các thử thách thuộc nhiều lĩnh vực khác nhau như Cryptography, Web Security, Reverse Engineering, Forensics và Pwn.',
+      'Trong quá trình tham gia, tôi đã rèn luyện khả năng phân tích lỗ hổng, tư duy logic, làm việc dưới áp lực thời gian, cũng như kỹ năng tìm kiếm và khai thác thông tin ẩn trong hệ thống. Cuộc thi không chỉ giúp tôi củng cố kiến thức nền tảng về an ninh mạng mà còn nâng cao tinh thần làm việc nhóm và khả năng tự học, tự nghiên cứu khi đối mặt với những bài toán mới và khó.',
+    ],
     type: 'Competition',
     image: 'images/cttf.jpg',
     images: [
@@ -22,11 +21,10 @@ export const ACHIEVEMENTS_VI: Achievement[] = [
   {
     id: 'a2',
     title: 'Vòng Chung Kết Cuộc thi "Sinh viên với ANTT 2025"',
-    description: `
-      Vòng Chung Kết cuộc thi "Sinh viên với An toàn Thông tin 2025" là chặng thi quan trọng, nơi các đội xuất sắc nhất được lựa chọn sau các vòng loại. Cuộc thi tập trung đánh giá kiến thức nền tảng và kỹ năng thực hành trong lĩnh vực an toàn thông tin, bao gồm phân tích lỗ hổng, bảo mật hệ thống, an ninh mạng và xử lý các tình huống tấn công thực tế.
-
-      Thông qua việc tham gia vòng chung kết, tôi đã có cơ hội áp dụng kiến thức đã học vào bài toán thực tiễn, nâng cao tư duy phân tích, khả năng làm việc nhóm và kỹ năng giải quyết vấn đề dưới áp lực thời gian. Đây là trải nghiệm quan trọng giúp tôi củng cố định hướng theo đuổi lĩnh vực an toàn thông tin trong tương lai.
-      `,
+    description: [
+      'Vòng Chung Kết cuộc thi "Sinh viên với An toàn Thông tin 2025" là chặng thi quan trọng, nơi các đội xuất sắc nhất được lựa chọn sau các vòng loại. Cuộc thi tập trung đánh giá kiến thức nền tảng và kỹ năng thực hành trong lĩnh vực an toàn thông tin, bao gồm phân tích lỗ hổng, bảo mật hệ thống, an ninh mạng và xử lý các tình huống tấn công thực tế.',
+      'Thông qua việc tham gia vòng chung kết, tôi đã có cơ hội áp dụng kiến thức đã học vào bài toán thực tiễn, nâng cao tư duy phân tích, khả năng làm việc nhóm và kỹ năng giải quyết vấn đề dưới áp lực thời gian. Đây là trải nghiệm quan trọng giúp tôi củng cố định hướng theo đuổi lĩnh vực an toàn thông tin trong tương lai.',
+    ],
 
     type: 'Competition',
     image: 'images/lGnIlP.jpg',

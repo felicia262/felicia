@@ -197,10 +197,15 @@ const App: React.FC = () => {
         </div>
       </nav>
       <div className="max-w-5xl mx-auto px-6 py-20">
-        <div className="text-center mb-16">
+          <div className="text-center mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-blue-600 mb-4 block">{item.type}</span>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-tight">{item.title}</h1>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">{item.description}</p>
+          <div className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            {Array.isArray(item.description)
+              ? item.description.map((para, i) => <p key={i} className="mb-6">{para}</p>)
+              : <p className="mb-6">{item.description}</p>
+            }
+          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {item.images?.map((img, i) => (

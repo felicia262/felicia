@@ -28,7 +28,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({ item, index, onClick 
           {item.title}
         </h3>
         <p className="text-sm opacity-90 leading-relaxed mb-6 max-w-md line-clamp-2">
-          {item.description}
+          {Array.isArray(item.description) ? item.description[0] : item.description}
         </p>
         <button className="w-fit px-6 py-2 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full text-sm font-semibold hover:bg-white hover:text-black transition-all">
           Xem chi tiết

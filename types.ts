@@ -12,7 +12,7 @@ export interface BlogPost {
 export interface Achievement {
   id: string;
   title: string;
-  description: string;
+  description: string | string[];
   type: 'Project' | 'Certificate' | 'Competition';
   image: string;
   images?: string[];
