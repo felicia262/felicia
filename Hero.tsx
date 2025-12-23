@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
       </div>
       <div className="mt-24 w-full max-w-5xl fade-in-up" style={{ animationDelay: '0.2s' }}>
         <img 
-          src="images/workspace.jpg" 
+          src="images/martin_1.jpg" 
           alt="Workspace setup" 
           className="rounded-3xl shadow-2xl w-full object-cover h-[400px] bg-gray-100"
           onError={(e) => {
