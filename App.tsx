@@ -232,7 +232,7 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="mt-24 w-full max-w-5xl fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <img src="/images/martin_1.jpg" alt="Workspace" className="rounded-3xl shadow-2xl w-full object-cover h-[400px]" />
+                <img src="images/martin_1.jpg" alt="Workspace" className="rounded-3xl shadow-2xl w-full object-cover h-[400px]" />
               </div>
             </section>
 
