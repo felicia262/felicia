@@ -5,9 +5,10 @@ import { BlogPost } from '../types';
 interface BlogCardProps {
   post: BlogPost;
   index: number;
+  readMoreLabel?: string;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ post, index, readMoreLabel }) => {
   return (
     <div 
       className="group bg-[#f5f5f7] rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1 fade-in-up flex flex-col h-full"
@@ -33,7 +34,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-200/50">
           <span className="text-xs text-gray-400 font-medium uppercase tracking-wider">{post.date}</span>
           <button className="text-blue-600 text-sm font-semibold group-hover:underline flex items-center gap-1">
-            Đọc tiếp
+            {readMoreLabel || 'Read More'}
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </button>
         </div>

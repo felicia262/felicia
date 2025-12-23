@@ -19,7 +19,18 @@ const SocialIcon = ({ name }: { name: string }) => {
 };
 
 const App: React.FC = () => {
-  const [lang, setLang] = useState<Language>('vi');
+  const [lang, setLang] = useState<Language>(() => {
+    try {
+      const saved = localStorage.getItem('lang');
+      return (saved === 'en' || saved === 'vi') ? (saved as Language) : 'vi';
+    } catch (e) {
+      return 'vi';
+    }
+  });
+
+  useEffect(() => {
+    try { localStorage.setItem('lang', lang); } catch (e) { /* ignore */ }
+  }, [lang]);
   const [view, setView] = useState<View>('home');
   const [activePost, setActivePost] = useState<BlogPost | null>(null);
   const [activeAchievement, setActiveAchievement] = useState<Achievement | null>(null);
@@ -238,7 +249,7 @@ const App: React.FC = () => {
                 <p className="text-xl md:text-3xl text-gray-500 font-normal leading-relaxed max-w-2xl mx-auto mb-12">{t.heroDesc}</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                   <button onClick={() => scrollToId('about')} className="px-8 py-3 bg-[#0071e3] text-white rounded-full font-medium hover:bg-[#0077ed] transition-colors">{t.explore}</button>
-                  <button onClick={() => { try { history.pushState(null, '', '#blog'); } catch(e) { window.location.hash = '#blog'; } scrollToId('blog'); }} className="text-[#0066cc] font-medium hover:underline flex items-center gap-1 group">{t.viewBlog} <span className="group-hover:translate-x-1 transition-transform">→</span></button>
+                  <button onClick={() => { setActivePost(null); setActiveAchievement(null); setSearchOpen(false); try { history.pushState(null, '', '#blog'); } catch(e) { window.location.hash = '#blog'; } setView('blog'); scrollToId('blog'); }} className="text-[#0066cc] font-medium hover:underline flex items-center gap-1 group">{t.viewBlog} <span className="group-hover:translate-x-1 transition-transform">→</span></button>
                 </div>
               </div>
               <div className="mt-24 w-full max-w-5xl fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -264,7 +275,7 @@ const App: React.FC = () => {
                 <div className="grid md:grid-cols-3 gap-8 items-stretch">
                   {BLOG_POSTS[lang].slice(0, 3).map((post, index) => (
                     <div key={post.id} onClick={() => openPost(post)} className="cursor-pointer">
-                      <BlogCard post={post} index={index} />
+                      <BlogCard post={post} index={index} readMoreLabel={t.readMore} />
                     </div>
                   ))}
                 </div>
@@ -279,7 +290,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="grid md:grid-cols-3 gap-8">
                   {ACHIEVEMENTS[lang].slice(0, 3).map((item, index) => (
-                    <AchievementCard key={item.id} item={item} index={index} onClick={() => setActiveAchievement(item)} />
+                    <AchievementCard key={item.id} item={item} index={index} onClick={() => setActiveAchievement(item)} viewDetailsLabel={t.viewDetails} />
                   ))}
                 </div>
               </div>
@@ -313,7 +324,7 @@ const App: React.FC = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                 {BLOG_POSTS[lang].map((post, index) => (
                   <div key={post.id} onClick={() => openPost(post)} className="cursor-pointer">
-                    <BlogCard post={post} index={index} />
+                    <BlogCard post={post} index={index} readMoreLabel={t.readMore} />
                   </div>
                 ))}
               </div>
@@ -330,7 +341,7 @@ const App: React.FC = () => {
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {ACHIEVEMENTS[lang].map((item, index) => (
-                  <AchievementCard key={item.id} item={item} index={index} onClick={() => setActiveAchievement(item)} />
+                  <AchievementCard key={item.id} item={item} index={index} onClick={() => setActiveAchievement(item)} viewDetailsLabel={t.viewDetails} />
                 ))}
               </div>
             </div>

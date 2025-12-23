@@ -8,7 +8,14 @@ interface AchievementCardProps {
   onClick?: () => void;
 }
 
-const AchievementCard: React.FC<AchievementCardProps> = ({ item, index, onClick }) => {
+interface AchievementCardProps {
+  item: Achievement;
+  index: number;
+  onClick?: () => void;
+  viewDetailsLabel?: string;
+}
+
+const AchievementCard: React.FC<AchievementCardProps> = ({ item, index, onClick, viewDetailsLabel }) => {
   return (
     <div 
       onClick={onClick}
@@ -31,7 +38,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({ item, index, onClick 
           {Array.isArray(item.description) ? item.description[0] : item.description}
         </p>
         <button className="w-fit px-6 py-2 bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-full text-sm font-semibold hover:bg-white hover:text-black transition-all">
-          Xem chi tiết
+          {viewDetailsLabel || 'View Details'}
         </button>
       </div>
     </div>
