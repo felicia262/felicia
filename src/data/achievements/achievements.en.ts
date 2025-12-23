@@ -9,13 +9,13 @@ export const ACHIEVEMENTS_EN: Achievement[] = [
       'Through participating in the competition, I strengthened my vulnerability analysis skills, logical thinking, and ability to work under time pressure, as well as my capability to search for and exploit hidden information within systems. The competition not only reinforced my foundational knowledge of cybersecurity but also enhanced my teamwork skills and self-learning ability when facing complex and unfamiliar problems.',
     ],
     type: 'Competition',
-    image: 'images/cttf.jpg',
+    image: '/felicia/images/cttf.jpg',
     images: [
-      'images/cttf.jpg',
-      'images/cctf.jpg',
-      'images/ctf.jpg',
-      'images/chungnhan_131522.png',
-      'images/8FAowZT.jpg',
+      '/felicia/images/cttf.jpg',
+      '/felicia/images/cctf.jpg',
+      '/felicia/images/ctf.jpg',
+      '/felicia/images/chungnhan_131522.png',
+      '/felicia/images/8FAowZT.jpg',
     ],
   },
   {
@@ -27,14 +27,14 @@ export const ACHIEVEMENTS_EN: Achievement[] = [
     ],
 
     type: 'Competition',
-    image: 'images/lGnIlP.jpg',
+    image: '/felicia/images/lGnIlP.jpg',
     images: [
-      'images/lGnIlP.jpg',
-      'images/ANTT.jpg',
-      'images/chungket.jpg',
-      'images/chungnhan_132594.png',
-      'images/E0hS9Ns.jpg',
-      'images/9lOhXsw.jpg',
+      '/felicia/images/lGnIlP.jpg',
+      '/felicia/images/ANTT.jpg',
+      '/felicia/images/chungket.jpg',
+      '/felicia/images/chungnhan_132594.png',
+      '/felicia/images/E0hS9Ns.jpg',
+      '/felicia/images/9lOhXsw.jpg',
     ],
   },
   {
@@ -42,9 +42,9 @@ export const ACHIEVEMENTS_EN: Achievement[] = [
     title: 'Cisco Networking Academy – Introduction to Cybersecurity',
     description: 'Completed the Introduction to Cybersecurity course organized by Cisco Networking Academy in collaboration with HUTECH, covering an overview of cyber threats, network protection processes, and the role of incident response teams.',
     type: 'Certificate',
-    image: 'images/Introduction_to_Cybersecurity.jpg',
+    image: '/felicia/images/Introduction_to_Cybersecurity.jpg',
     images: [
-      'images/Introduction_to_Cybersecurity.jpg',
+      '/felicia/images/Introduction_to_Cybersecurity.jpg',
     ],
   },
   {
@@ -52,9 +52,9 @@ export const ACHIEVEMENTS_EN: Achievement[] = [
     title: 'Cisco Networking Academy – Networking Basics',
     description: 'The Networking Basics certificate helped me gain a solid understanding of the OSI model, IP addressing, basic routing, and small network design. Hands-on labs focused on configuring SOHO devices, traffic inspection, and reinforcing security awareness at the access layer.',
     type: 'Certificate',
-    image: 'images/Networking_Basics.jpg',
+    image: '/felicia/images/Networking_Basics.jpg',
     images: [
-      'images/Networking_Basics.jpg',
+      '/felicia/images/Networking_Basics.jpg',
     ],
   },
   {
@@ -62,9 +62,9 @@ export const ACHIEVEMENTS_EN: Achievement[] = [
     title: 'Cisco Networking Academy – JavaScript Essentials 1',
     description: 'The JavaScript Essentials 1 course strengthened my foundational JavaScript programming skills, including ES6 syntax, variables and functions, DOM manipulation, and event handling to build more stable and secure front-end applications.',
     type: 'Certificate',
-    image: 'images/JavaScript_Essentials_1_certificate.jpg',
+    image: '/felicia/images/JavaScript_Essentials_1_certificate.jpg',
     images: [
-      'images/JavaScript_Essentials_1_certificate.jpg',
+      '/felicia/images/JavaScript_Essentials_1_certificate.jpg',
     ],
   },
   {
@@ -72,9 +72,9 @@ export const ACHIEVEMENTS_EN: Achievement[] = [
     title: 'Cisco Networking Academy – JavaScript Essentials 2',
     description: 'The JavaScript Essentials 2 course expanded my knowledge into asynchronous programming, REST API interaction, clean error handling, and modular code writing to support real-world front-end projects within the NetAcad environment.',
     type: 'Certificate',
-    image: 'images/JavaScript_Essentials_2_certificate.jpg',
+    image: '/felicia/images/JavaScript_Essentials_2_certificate.jpg',
     images: [
-      'images/JavaScript_Essentials_2_certificate.jpg',
+      '/felicia/images/JavaScript_Essentials_2_certificate.jpg',
     ],
   },
 ];

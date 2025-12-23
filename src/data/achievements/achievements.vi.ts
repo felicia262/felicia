@@ -9,13 +9,13 @@ export const ACHIEVEMENTS_VI: Achievement[] = [
       'Trong quá trình tham gia, tôi đã rèn luyện khả năng phân tích lỗ hổng, tư duy logic, làm việc dưới áp lực thời gian, cũng như kỹ năng tìm kiếm và khai thác thông tin ẩn trong hệ thống. Cuộc thi không chỉ giúp tôi củng cố kiến thức nền tảng về an ninh mạng mà còn nâng cao tinh thần làm việc nhóm và khả năng tự học, tự nghiên cứu khi đối mặt với những bài toán mới và khó.',
     ],
     type: 'Competition',
-    image: 'images/cttf.jpg',
+    image: '/felicia/images/cttf.jpg',
     images: [
-      'images/cttf.jpg',
-      'images/cctf.jpg',
-      'images/ctf.jpg',
-      'images/chungnhan_131522.png',
-      'images/8FAowZT.jpg',
+      '/felicia/images/cttf.jpg',
+      '/felicia/images/cctf.jpg',
+      '/felicia/images/ctf.jpg',
+      '/felicia/images/chungnhan_131522.png',
+      '/felicia/images/8FAowZT.jpg',
     ],
   },
   {
@@ -27,14 +27,14 @@ export const ACHIEVEMENTS_VI: Achievement[] = [
     ],
 
     type: 'Competition',
-    image: 'images/lGnIlP.jpg',
+    image: '/felicia/images/lGnIlP.jpg',
     images: [
-      'images/lGnIlP.jpg',
-      'images/ANTT.jpg',
-      'images/chungket.jpg',
-      'images/chungnhan_132594.png',
-      'images/E0hS9Ns.jpg',
-      'images/9lOhXsw.jpg',
+      '/felicia/images/lGnIlP.jpg',
+      '/felicia/images/ANTT.jpg',
+      '/felicia/images/chungket.jpg',
+      '/felicia/images/chungnhan_132594.png',
+      '/felicia/images/E0hS9Ns.jpg',
+      '/felicia/images/9lOhXsw.jpg',
     ],
   },
   {
@@ -42,9 +42,9 @@ export const ACHIEVEMENTS_VI: Achievement[] = [
     title: 'Cisco Networking Academy – Introduction to Cybersecurity',
     description: 'Hoàn thành khóa Introduction to Cybersecurity do Cisco Networking Academy phối hợp HUTECH tổ chức, bao gồm tổng quan mối đe dọa, quy trình bảo vệ mạng và vai trò của đội phản ứng.',
     type: 'Certificate',
-    image: 'images/Introduction_to_Cybersecurity.jpg',
+    image: '/felicia/images/Introduction_to_Cybersecurity.jpg',
     images: [
-      'images/Introduction_to_Cybersecurity.jpg',
+      '/felicia/images/Introduction_to_Cybersecurity.jpg',
     ],
   },
   {
@@ -52,9 +52,9 @@ export const ACHIEVEMENTS_VI: Achievement[] = [
     title: 'Cisco Networking Academy – Networking Basics',
     description: 'Chứng chỉ Networking Basics giúp tôi nắm vững mô hình OSI, địa chỉ IP, định tuyến cơ bản và thiết kế mạng nhỏ. Các bài lab tập trung vào cấu hình thiết bị SOHO, kiểm tra lưu lượng và củng cố ý thức bảo mật ngay từ lớp truy cập.',
     type: 'Certificate',
-    image: 'images/Networking_Basics.jpg',
+    image: '/felicia/images/Networking_Basics.jpg',
     images: [
-      'images/Networking_Basics.jpg',
+      '/felicia/images/Networking_Basics.jpg',
     ],
   },
   {
@@ -62,9 +62,9 @@ export const ACHIEVEMENTS_VI: Achievement[] = [
     title: 'Cisco Networking Academy – JavaScript Essentials 1',
     description: 'Khóa JavaScript Essentials 1 giúp tôi củng cố nền tảng lập trình JavaScript với cú pháp ES6, thao tác biến/hàm, làm việc với DOM và sự kiện để xây dựng front-end ổn định và an toàn hơn.',
     type: 'Certificate',
-    image: 'images/JavaScript_Essentials_1_certificate.jpg',
+    image: '/felicia/images/JavaScript_Essentials_1_certificate.jpg',
     images: [
-      'images/JavaScript_Essentials_1_certificate.jpg',
+      '/felicia/images/JavaScript_Essentials_1_certificate.jpg',
     ],
   },
   {
@@ -72,9 +72,9 @@ export const ACHIEVEMENTS_VI: Achievement[] = [
     title: 'Cisco Networking Academy – JavaScript Essentials 2',
     description: 'Khóa JavaScript Essentials 2 mở rộng sang quản lý bất đồng bộ, thao tác API REST, xử lý lỗi tinh gọn và viết mã module hóa để phục vụ các dự án front-end thực tế trong môi trường NetAcad.',
     type: 'Certificate',
-    image: 'images/JavaScript_Essentials_2_certificate.jpg',
+    image: '/felicia/images/JavaScript_Essentials_2_certificate.jpg',
     images: [
-      'images/JavaScript_Essentials_2_certificate.jpg',
+      '/felicia/images/JavaScript_Essentials_2_certificate.jpg',
     ],
   },
 ];
