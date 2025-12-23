@@ -7,6 +7,11 @@ export interface BlogPost {
   date: string;
   image: string;
   category: string;
+  author?: {
+    name?: string;
+    avatar?: string;
+  };
+  readingTime?: string;
 }
 
 export interface Achievement {
@@ -25,3 +30,8 @@ export interface NavItem {
 }
 
 export type Language = 'vi' | 'en';
+
+export interface Translation {
+  back: string;
+  [key: string]: any;
+}

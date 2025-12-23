@@ -1,15 +1,26 @@
-Client-Server là mô hình phân tán trong đó các nhiệm vụ được phân chia giữa Client (người sử dụng) và Server (cung cấp dịch vụ). Bài viết giải thích luồng request-response, quản lý phiên, và các mô hình mở rộng (load balancing, caching).
+Mô hình client-server là một kiến trúc phân tán cốt lõi, trong đó client gửi yêu cầu dịch vụ và server cung cấp dịch vụ. Dưới đây là mô hình request–response phổ biến, cách quản lý phiên làm việc và các kỹ thuật mở rộng quy mô trong hệ thống thực tế.
 
-## Một request diễn ra như thế nào?
+## Luồng request–response
 
-Người dùng nhập URL. Trình duyệt gửi request. Server xử lý. Response được trả về. Trình duyệt hiển thị kết quả.
+1. Client (trình duyệt, ứng dụng) tạo một request (ví dụ: HTTP GET).
+2. Request di chuyển qua mạng đến server.
+3. Server xử lý logic, truy cập cơ sở dữ liệu và chuẩn bị response.
+4. Response được gửi lại cho client và hiển thị cho người dùng.
 
-## Client và Server
+## Trạng thái và phiên làm việc
 
-Client là nơi người dùng thao tác. Server là nơi xử lý dữ liệu và logic nghiệp vụ.
+Mô hình client-server có thể **stateless** (mỗi request độc lập) hoặc **stateful** (server lưu trạng thái phiên). Thiết kế RESTful ưu tiên server stateless, lưu trạng thái phiên ở phía client (cookie, token) hoặc trong kho lưu trữ chung.
 
-## Ưu và nhược điểm
+## Các mô hình mở rộng
 
-Mô hình này dễ quản lý và mở rộng nhưng server có thể trở thành điểm nghẽn.
+- Mở rộng dọc: tăng CPU/RAM cho server.
+- Mở rộng ngang: thêm nhiều server phía sau load balancer.
+- Caching: giảm tải bằng cách cache response (CDN, reverse proxy, cache trong RAM).
 
-**Kết luận:** Client-Server là nền móng của web hiện đại.
+## Xử lý lỗi và tăng độ bền
+
+Server có thể là điểm lỗi đơn; giảm thiểu bằng cách dự phòng, kiểm tra sức khỏe, chiến lược retry/backoff và circuit breaker.
+
+## Tóm tắt
+
+Client-server là nền tảng của web hiện đại. Hiểu về quản lý phiên, mô hình mở rộng và kỹ thuật chống lỗi là điều cần thiết để xây dựng dịch vụ vững chắc.

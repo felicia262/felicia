@@ -8,7 +8,12 @@ const post: BlogPost = {
   content,
   date: '09-12-2025',
   category: 'Giao thức',
-  image: 'https://devops.vinahost.vn/Image/TCP-UDP.png'
+  image: 'https://devops.vinahost.vn/Image/TCP-UDP.png',
+  readingTime: '3 min read',
+  author: {
+    name: 'Nguyễn Thị Thanh Thảo',
+    avatar: 'images/martin_1.jpg'
+  }
 };
 
 export default post;

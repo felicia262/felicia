@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Navbar from './components/Navbar';
 import BlogCard from './components/BlogCard';
+import BlogDetail from './components/BlogDetail';
 import AchievementCard from './components/AchievementCard';
 import { BLOG_POSTS, ACHIEVEMENTS, SOCIAL_LINKS, CONTACT_INFO, TRANSLATIONS } from './constants';
 import { BlogPost, Achievement, Language } from './types';
@@ -172,29 +173,7 @@ const App: React.FC = () => {
       </div>
     </div>
   );
-
-  const BlogDetail = ({ post }: { post: BlogPost }) => (
-    <div className="fixed inset-0 z-[100] bg-white overflow-y-auto animate-in fade-in duration-500">
-      <nav className="sticky top-0 w-full apple-blur border-b border-gray-100 z-10">
-        <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-          <button onClick={() => { try { history.pushState(null, '', '#blog'); } catch(e) { window.location.hash = '#blog'; } setActivePost(null); }} className="text-blue-600 font-medium flex items-center gap-2">
-            <span>← {t.back}</span>
-          </button>
-          <div className="font-bold text-xl tracking-tighter">COER.</div>
-          <div className="w-20"></div>
-        </div>
-      </nav>
-      <div className="max-w-3xl mx-auto px-6 py-20">
-        <span className="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-4 block text-center">{post.category}</span>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-tight mb-8 text-center">{post.title}</h1>
-        <div className="flex items-center justify-center gap-4 mb-12 text-gray-400 text-sm"><span>{post.date}</span><span>•</span><span>5 min read</span></div>
-        <img src={post.image} alt={post.title} className="w-full aspect-video object-cover rounded-3xl mb-12 shadow-lg" />
-        <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-          {post.content.split('\n').map((para, i) => <p key={i} className="mb-6">{para}</p>)}
-        </div>
-      </div>
-    </div>
-  );
+  
 
   const AchievementDetail = ({ item }: { item: Achievement }) => (
     <div className="fixed inset-0 z-[100] bg-[#fbfbfd] overflow-y-auto animate-in fade-in duration-500">
@@ -370,7 +349,13 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {activePost && <BlogDetail post={activePost} />}
+      {activePost && (
+        <BlogDetail
+          post={activePost}
+          t={t}
+          onClose={() => { try { history.pushState(null, '', '#blog'); } catch(e) { window.location.hash = '#blog'; } setActivePost(null); }}
+        />
+      )}
       {activeAchievement && <AchievementDetail item={activeAchievement} />}
       {searchOpen && <SearchOverlay />}
     </div>

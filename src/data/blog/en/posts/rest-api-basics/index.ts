@@ -8,7 +8,12 @@ const post: BlogPost = {
   content,
   date: '17-12-2025',
   category: 'API',
-  image: 'https://topdev.vn/blog/wp-content/uploads/2019/04/restful-api.jpg'
+  image: 'https://topdev.vn/blog/wp-content/uploads/2019/04/restful-api.jpg',
+  readingTime: '4 min read',
+  author: {
+    name: 'Nguyen Thi Thanh Thao',
+    avatar: 'images/martin_1.jpg'
+  }
 };
 
 export default post;

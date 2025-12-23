@@ -1,14 +1,20 @@
 
-This tutorial guides you through building a small networked application (chat or file transfer) using Java or JavaScript. Step-by-step topics include socket creation, message framing, and synchronization/handling.
+This practical guide walks you through building a simple client-server application (chat or file transfer) to consolidate concepts like sockets, framing, and concurrency.
 
-## Knowledge summary
+## Core steps
 
-Sockets, TCP, client-server patterns, and multithreading all come together in a complete network application.
+1. **Create sockets:** establish server listener and client connectors.
+2. **Define a message format:** simple length-prefixed frames or newline-delimited messages.
+3. **Handle concurrency:** use threads or async I/O to serve multiple clients.
+4. **Handle errors and reconnections:** implement retries and graceful shutdown.
 
-## Why practice?
+## Example: simple protocol
 
-Hands-on practice helps you understand data flow, error handling, and performance optimization.
+- Messages are lines ending with `\n`.
+- Server echoes messages to all connected clients (basic chat).
 
-## Next steps
+## Testing and next steps
 
-From a small app you can evolve into a larger system. Practice is the fastest way to master network programming.
+Test under concurrent connections and simulate network faults. Extend the app with authentication, message persistence, or a web-based client.
+
+**Conclusion:** Building a small networked app is the best way to internalize networking concepts and pitfalls.

@@ -8,7 +8,12 @@ const post: BlogPost = {
   content,
   date: '11-12-2025',
   category: 'Hệ thống',
-  image: 'https://cloud-web-cms-v2.s3.cloud.cmctelecom.vn/02_cach_hoat_dong_cua_mo_hinh_client_server_la_gi_f9fde4288c.png'
+  image: 'https://cloud-web-cms-v2.s3.cloud.cmctelecom.vn/02_cach_hoat_dong_cua_mo_hinh_client_server_la_gi_f9fde4288c.png',
+  readingTime: '4 min read',
+  author: {
+    name: 'Nguyễn Thị Thanh Thảo',
+    avatar: 'images/martin_1.jpg'
+  }
 };
 
 export default post;

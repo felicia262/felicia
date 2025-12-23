@@ -10,6 +10,16 @@ OSI là mô hình gồm 7 lớp, từ Physical (vật lý) cho tới Application
 
 TCP/IP là mô hình thực tế đang vận hành Internet. Nó chỉ có 4 lớp và gộp nhiều chức năng của OSI để đơn giản hóa triển khai.
 
+
+## Ví dụ: Phân tích gói tin HTTP với Wireshark
+
+1. Mở Wireshark và bắt đầu capture trên card mạng.
+2. Truy cập một website (ví dụ: http://example.com).
+3. Trong Wireshark, lọc theo `http` để xem các gói HTTP.
+4. Click vào một gói để xem các lớp: Ethernet (Link), IP (Network), TCP (Transport), HTTP (Application).
+
+*Thực hành này giúp bạn thấy rõ các lớp OSI/TCP-IP trong lưu lượng mạng thực tế.*
+
 ## So sánh nhanh
 
 OSI giúp học và phân tích lỗi.

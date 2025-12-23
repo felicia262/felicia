@@ -1,17 +1,34 @@
-Mạng máy tính là một tập hợp các máy tính và thiết bị phần cứng khác được kết nối với nhau thông qua các kênh truyền thông để chia sẻ tài nguyên và thông tin.
+Mạng máy tính là hệ thống các thiết bị kết nối với nhau để trao đổi dữ liệu và chia sẻ tài nguyên. Bài viết này giới thiệu các thành phần cốt lõi, cách dữ liệu di chuyển giữa các máy, và ví dụ thực tế giúp bạn hiểu hoạt động Internet hàng ngày.
 
-Trong bài viết này chúng ta sẽ xem xét các thành phần chính, cách dữ liệu di chuyển giữa các nút, và các thiết bị trung gian như switch, router, và hub.
+## Mạng là gì?
 
-## Nội dung chi tiết
+Mạng là tập hợp các thiết bị (máy tính, điện thoại, server, switch, router) kết nối qua dây hoặc không dây. Mạng cho phép giao tiếp, chia sẻ tài nguyên (máy in, lưu trữ), và truy cập dịch vụ tập trung.
 
-Mạng máy tính là một hệ thống gồm nhiều máy tính và các thiết bị phần cứng khác nhau được kết nối với nhau thông qua các phương tiện truyền dẫn như cáp xoắn đôi, cáp quang hoặc sóng vô tuyến. Mục tiêu chính của mạng máy tính là cho phép các thiết bị trao đổi dữ liệu, chia sẻ tài nguyên và phối hợp hoạt động một cách hiệu quả.
+## Thành phần chính
 
-Trong đời sống hiện đại, mạng máy tính xuất hiện ở hầu hết mọi lĩnh vực. Khi bạn gửi một email, truy cập một trang web, xem video trên YouTube hay học online qua Zoom, tất cả đều đang sử dụng mạng máy tính. Nhờ có mạng, người dùng có thể chia sẻ tập tin, sử dụng chung máy in, truy cập cơ sở dữ liệu tập trung và kết nối Internet mọi lúc mọi nơi.
+**Host:** Điểm cuối như client và server tạo hoặc nhận dữ liệu.
+**Switch:** Thiết bị chuyển mạch trong LAN, chuyển frame dựa trên địa chỉ MAC.
+**Router:** Định tuyến gói tin giữa các mạng dựa trên IP.
+**Cáp / Không dây:** Tầng vật lý truyền tín hiệu (Ethernet, cáp quang, Wi‑Fi).
 
-Mạng máy tính được phân loại theo phạm vi hoạt động. Mạng LAN thường xuất hiện trong gia đình, phòng máy hoặc doanh nghiệp nhỏ, có tốc độ cao và phạm vi hẹp. MAN mở rộng phạm vi lên cấp thành phố, thường được sử dụng cho các hệ thống đô thị thông minh. WAN có phạm vi toàn cầu, tiêu biểu nhất chính là Internet – mạng lớn nhất mà con người từng xây dựng.
+## Dữ liệu di chuyển như thế nào?
 
-Một mạng máy tính hoàn chỉnh bao gồm nhiều thành phần như máy trạm (Client) – nơi người dùng thao tác, máy chủ (Server) – nơi cung cấp dịch vụ, các thiết bị mạng trung gian như Switch, Router và các giao thức truyền thông để đảm bảo dữ liệu được truyền đi chính xác.
+1. Ứng dụng trên client tạo dữ liệu gửi đi (ví dụ: truy vấn web).
+2. Dữ liệu được đóng gói qua các tầng (ứng dụng → vận chuyển → mạng → liên kết).
+3. NIC gửi frame đến switch; router chuyển tiếp gói tin đến mạng đích.
+4. Máy đích nhận và chuyển dữ liệu cho ứng dụng nhận.
+
+## Các phạm vi mạng
+
+**LAN:** Mạng nội bộ gia đình, văn phòng — tốc độ cao, phạm vi nhỏ.
+**MAN:** Mạng đô thị cho trường học, thành phố.
+**WAN:** Kết nối liên tỉnh, quốc tế; Internet là WAN lớn nhất.
+
+## Ví dụ thực tế
+
+- Truy cập website: tra cứu DNS → kết nối TCP/UDP → luồng HTTP request/response.
+- Gửi email: dùng giao thức SMTP và POP/IMAP qua TCP.
 
 ## Tóm tắt
 
-Mạng máy tính là nền tảng của Internet và mọi hệ thống CNTT hiện đại. Hiểu rõ khái niệm này là bước đầu tiên để tiếp cận các môn chuyên sâu như mạng máy tính, an toàn thông tin và lập trình mạng.
+Nắm vững kiến thức mạng giúp bạn xử lý sự cố, thiết kế hệ thống mở rộng, và hiểu về hiệu năng, bảo mật. Tiếp theo: tìm hiểu TCP/IP, định tuyến, và các lệnh kiểm tra mạng cơ bản (ping, traceroute, netstat).

@@ -1,11 +1,40 @@
 
-This article examines the main differences between TCP and UDP. TCP provides reliability, ordered delivery, and flow control — suitable for applications that require accurate data transfer (for example, HTTP or FTP). UDP is connectionless, lightweight, and faster, making it suitable for real-time transmission (for example, VoIP or streaming), but it does not guarantee ordering or reliability.
+This article examines key differences between TCP and UDP and helps you choose the right transport protocol for your application.
+
+## TCP at a glance
+
+TCP (Transmission Control Protocol) provides a reliable, ordered, and congestion-aware byte stream. It establishes a connection (three-way handshake), performs retransmissions, and guarantees delivery order.
+
+Use TCP for: HTTP, database replication, file transfer — any case where correctness matters.
+
+## UDP at a glance
+
+UDP (User Datagram Protocol) is connectionless and sends discrete datagrams with minimal overhead. It does not guarantee delivery, ordering, or duplicate suppression.
+
+Use UDP for: live audio/video streaming, VoIP, DNS queries, or applications that implement their own recovery and prioritization.
 
 ## Quick comparison
 
-- **TCP:** connection-oriented, error-checked, ordered delivery, generally slower.
-- **UDP:** connectionless, no ordering guarantees, very fast.
+**TCP:** connection-oriented, reliable, ordered, heavier; good for correctness.
+**UDP:** connectionless, low-latency, lightweight, no built-in reliability; good for real-time data.
 
-## When to choose which
 
-Pick TCP for important data that must arrive intact; choose UDP for low-latency real-time streams.
+## Example: UDP Echo Server (Node.js)
+
+```js
+const dgram = require('dgram');
+const server = dgram.createSocket('udp4');
+server.on('message', (msg, rinfo) => {
+	server.send(msg, rinfo.port, rinfo.address);
+});
+server.bind(41234);
+```
+
+*This UDP server echoes any message it receives.*
+
+## Practical tips
+
+- Prefer TCP for transactional or stateful services.
+- Consider UDP when latency is critical and occasional loss is acceptable; combine with FEC or application-level retransmission if needed.
+
+**Summary:** Choose TCP when you need reliability; choose UDP when you need speed and low latency and can tolerate packet loss.

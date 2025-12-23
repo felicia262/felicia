@@ -1,17 +1,34 @@
-Computer networks are collections of computers and other hardware devices connected via communication channels to share resources and information.
+Computer networks are systems of interconnected devices that exchange data and share resources. This article introduces the core building blocks, the way data flows between hosts, and practical examples so you can understand how everyday Internet activities work.
 
-This article examines the main components of a network, how data moves between nodes, and intermediary devices such as switches, routers, and hubs.
+## What is a network?
 
-## Detailed content
+A network is a collection of devices (computers, phones, servers, switches, routers) connected using physical or wireless media. Networks enable communication, resource sharing (printers, storage), and access to centralized services.
 
-A computer network is a system of multiple computers and hardware devices connected by transmission media such as twisted-pair cables, optical fiber, or radio waves. The primary goal of a network is to enable devices to exchange data, share resources, and coordinate activity efficiently.
+## Key components
 
-In modern life, networks appear in nearly every domain. When you send an email, visit a website, watch a video, or attend an online meeting, you are using computer networks. Networks allow users to share files, use shared printers, access centralized databases, and connect to the Internet.
+**Hosts:** Endpoints such as clients and servers that generate or consume data.
+**Switches:** Local devices that forward frames inside a LAN based on MAC addresses.
+**Routers:** Devices that forward packets across networks using IP routing.
+**Cables / Wireless:** The physical layer carrying signals (Ethernet, fiber, Wi‑Fi).
 
-Networks are classified by scope. LANs (Local Area Networks) typically exist in homes, labs, or small offices and offer high speeds over a limited area. MANs (Metropolitan Area Networks) cover a city-level area and may be used for municipal systems. WANs (Wide Area Networks) operate at a global scale — the Internet is the largest WAN built by humans.
+## How data moves (brief)
 
-A complete network includes clients (where users interact), servers (which provide services), intermediary devices like switches and routers, and communication protocols that ensure accurate data transmission.
+1. An application on the client creates data to send (e.g., a web request).
+2. Data is encapsulated through layers (application → transport → network → link).
+3. The NIC transmits frames to the local switch; routers forward packets towards the destination network.
+4. The destination host decapsulates and hands data to the receiving application.
+
+## Network scopes
+
+**LAN (Local Area Network):** Home, office or lab networks — high speed, limited area.
+**MAN (Metropolitan Area Network):** City-level networks for campuses or municipalities.
+**WAN (Wide Area Network):** Connects cities and countries; the Internet is the largest WAN.
+
+## Practical examples
+
+- Visiting a website: DNS lookup → TCP/UDP connection → HTTP request/response flow.
+- Sending an email: SMTP and POP/IMAP protocols over TCP.
 
 ## Summary
 
-Computer networks are the foundation of the Internet and modern IT systems. Understanding these concepts is the first step toward studying networking, security, and network programming.
+Understanding networking basics helps you debug connectivity issues, design scalable systems, and reason about performance and security. Next steps: learn TCP/IP internals, routing, and basic network troubleshooting commands (ping, traceroute, netstat).

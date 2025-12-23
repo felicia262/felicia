@@ -8,7 +8,12 @@ const post: BlogPost = {
   content,
   date: '02-12-2025',
   category: 'Lập trình',
-  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmAdN82jJlvO8uvh1dZt3d2Lj6fSoVj2yK5Q&s'
+  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmAdN82jJlvO8uvh1dZt3d2Lj6fSoVj2yK5Q&s',
+  readingTime: '6 min read',
+  author: {
+    name: 'Nguyễn Thị Thanh Thảo',
+    avatar: 'images/martin_1.jpg'
+  }
 };
 
 export default post;

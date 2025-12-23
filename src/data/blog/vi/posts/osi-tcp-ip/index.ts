@@ -8,7 +8,12 @@ const post: BlogPost = {
   content,
   date: '25-11-2025',
   category: 'Kiến trúc',
-  image: 'https://unifi.vn/wp-content/uploads/2024/03/osi-vs-tcp-ip2.jpg'
+  image: 'https://unifi.vn/wp-content/uploads/2024/03/osi-vs-tcp-ip2.jpg',
+  readingTime: '4 min read',
+  author: {
+    name: 'Nguyễn Thị Thanh Thảo',
+    avatar: 'images/martin_1.jpg'
+  }
 };
 
 export default post;
