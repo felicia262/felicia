@@ -1,50 +1,56 @@
+# HTTP và Web Server cơ bản
 
-HTTP là giao thức lớp ứng dụng để truyền các tài liệu siêu văn bản. Bài viết hướng dẫn cấu trúc request/response, headers, status codes, và cách viết một web server đơn giản (ví dụ dùng Node.js hoặc Python).
+## Giới thiệu
+
+HTTP (HyperText Transfer Protocol) là giao thức lớp ứng dụng được sử dụng để truyền các tài liệu siêu văn bản trên World Wide Web. HTTP đóng vai trò nền tảng cho các ứng dụng web hiện đại, cho phép client (trình duyệt, ứng dụng) giao tiếp với server thông qua mô hình request–response.
+
+Bài viết này trình bày cấu trúc của HTTP request và response, các header và status code quan trọng, đồng thời minh họa cách xây dựng một web server đơn giản bằng Node.js.
 
 ## Cấu trúc HTTP Request
 
-Một HTTP request gửi từ client đến server thường gồm:
+Một HTTP request được gửi từ client đến server bao gồm các thành phần sau:
 
 **Method**  
-	Định nghĩa hành động: `GET`, `POST`, `PUT`, `DELETE`, ...
+Xác định hành động mà client muốn thực hiện trên tài nguyên, ví dụ `GET`, `POST`, `PUT`, `DELETE`.
 
 **URL / Path**  
-	Xác định tài nguyên trên server.
+Xác định tài nguyên cụ thể trên server mà client muốn truy cập.
 
 **Headers**  
-	Thông tin bổ sung:  
-	`Content-Type`, `Authorization`, `Cache-Control`.
+Chứa các thông tin bổ sung cho request, chẳng hạn như kiểu dữ liệu, xác thực hoặc cơ chế cache.  
+Một số header phổ biến gồm `Content-Type`, `Authorization`, `Cache-Control`.
 
 **Body (tùy chọn)**  
-	Dữ liệu gửi kèm (thường với POST hoặc PUT).
+Chứa dữ liệu gửi kèm theo request, thường được sử dụng với các phương thức `POST` hoặc `PUT`.
 
 ## Cấu trúc HTTP Response
 
-Server trả về:
+Sau khi xử lý request, server sẽ trả về một HTTP response bao gồm:
 
 **Status Code**  
-	Kết quả xử lý:  
-	`200 OK`, `404 Not Found`, `500 Internal Server Error`.
+Cho biết kết quả xử lý của request, ví dụ `200 OK`, `404 Not Found`, `500 Internal Server Error`.
 
 **Headers**  
-	Thông tin về response:  
-	`Content-Type`, `Cache-Control`, `Set-Cookie`.
+Cung cấp thông tin về response, chẳng hạn như kiểu dữ liệu trả về, cơ chế cache hoặc cookie.  
+Một số header thường gặp là `Content-Type`, `Cache-Control`, `Set-Cookie`.
 
 **Body**  
-	Nội dung trả về: HTML, JSON, ảnh, ...
+Nội dung mà server trả về cho client, có thể là HTML, JSON, hình ảnh hoặc các dữ liệu khác.
 
-## Một số hành vi cơ bản của HTTP
+## Một số đặc điểm quan trọng của HTTP
 
 **Stateless**  
-	Mỗi request độc lập, server không lưu trạng thái client.
+HTTP là giao thức không trạng thái, nghĩa là mỗi request được xử lý độc lập và server không lưu thông tin về các request trước đó của client.
 
 **Caching**  
-	Trình duyệt hoặc proxy có thể cache response để tăng hiệu năng.
+HTTP hỗ trợ cơ chế cache giúp trình duyệt hoặc proxy lưu trữ response, từ đó giảm tải cho server và cải thiện hiệu năng.
 
 **Bảo mật**  
-	HTTPS (HTTP over TLS) mã hóa dữ liệu, đảm bảo an toàn.
+HTTPS (HTTP over TLS) được sử dụng để mã hóa dữ liệu trao đổi giữa client và server, giúp bảo vệ thông tin khỏi việc nghe lén hoặc sửa đổi trái phép.
 
 ## Ví dụ: Web Server đơn giản với Node.js
+
+Ví dụ sau minh họa cách tạo một HTTP server cơ bản bằng Node.js. Server này lắng nghe request và trả về một chuỗi văn bản cho client.
 
 ```js
 const http = require('http');
@@ -55,4 +61,12 @@ http.createServer((req, res) => {
 }).listen(3000);
 ```
 
-*Ví dụ này tạo một HTTP server trả về "Hello world" cho mọi request.*
+Server trên sẽ phản hồi mọi request bằng nội dung “Hello world”, giúp minh họa rõ cơ chế request–response của HTTP.
+
+## Liên hệ với các khái niệm mạng
+
+HTTP hoạt động trên nền TCP, thừa hưởng các đặc tính như độ tin cậy và đảm bảo thứ tự gói tin. Việc hiểu rõ HTTP giúp người học nắm được cách các ứng dụng web giao tiếp và là bước nền quan trọng trước khi tiếp cận các kiến trúc như RESTful API hoặc các hệ thống web phức tạp hơn.
+
+## Tổng kết
+
+HTTP là giao thức cốt lõi của web, cung cấp cơ chế giao tiếp đơn giản nhưng mạnh mẽ giữa client và server. Việc nắm vững cấu trúc request–response và cách xây dựng web server cơ bản giúp người học hiểu sâu hơn cách hoạt động của các ứng dụng web hiện đại.

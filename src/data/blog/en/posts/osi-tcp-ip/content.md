@@ -1,40 +1,84 @@
-## Why use network models?
+# OSI and TCP/IP Network Models
 
-Network models give us an organized way to think about the many steps data takes from one host to another. By separating responsibilities into layers, we can build, test and debug systems more effectively.
+## Why Do We Need Network Models?
 
-## The OSI model (conceptual)
+When data is transmitted from one device to another, the process involves much more than simply sending and receiving information. It includes signal encoding, routing, error control, and session management.
 
-OSI defines seven layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. It is a learning tool that clarifies responsibilities such as framing, routing, and application semantics.
+To make network design, implementation, and troubleshooting easier, researchers divided the communication process into logical layers. Each layer is responsible for a specific function, making network development and fault analysis more structured and systematic.
 
-## TCP/IP — the real-world model
+## The OSI Model
 
-TCP/IP is the suite used on the Internet. It combines responsibilities into four layers (Link, Internet, Transport, Application) and directly maps to widely-used protocols like IP, TCP, UDP and HTTP.
+OSI (Open Systems Interconnection) is a reference model consisting of seven layers that describe how data travels from a user application to a destination device across a network.
 
-## Where they differ and why it matters
+The seven layers of the OSI model are:
 
-**OSI:** Great for teaching and diagnosing where a problem sits (e.g. physical vs. transport).
-**TCP/IP:** Practical, implemented, and the model you'll use when troubleshooting real networks.
+**Physical:**  
+Transmits electrical, optical, or radio signals over physical media such as network cables or Wi-Fi.
 
-## Practical mapping
+**Data Link:**  
+Encapsulates data into frames and delivers them within a local network based on MAC addresses.
 
-- Ethernet / Wi‑Fi → Link / Physical + Data Link
-- IP → Network / Internet layer
-- TCP / UDP → Transport layer
-- HTTP / DNS / SSH → Application layer
+**Network:**  
+Routes packets between different networks using IP addresses.
 
+**Transport:**  
+Provides end-to-end data delivery, including error control and flow control (TCP, UDP).
 
-## Example: Inspecting HTTP Traffic with Wireshark
+**Session:**  
+Manages and maintains communication sessions between two devices.
 
-1. Start Wireshark and begin capturing on your network interface.
-2. Open a browser and visit a website (e.g., http://example.com).
-3. In Wireshark, filter by `http` to see HTTP packets.
-4. Click a packet to view its layers: Ethernet (Link), IP (Network), TCP (Transport), HTTP (Application).
+**Presentation:**  
+Handles data encoding, compression, and formatting.
 
-*This hands-on shows how OSI/TCP-IP layers appear in real network traffic.*
+**Application:**  
+Provides interfaces for user applications such as web services, email, and FTP.
 
-## Quick summary
+The OSI model is highly academic and is widely used for teaching and network troubleshooting.
 
-Use OSI as a study guide; use TCP/IP as the basis for real implementations and troubleshooting. Familiarity with both helps you reason about network problems and design robust systems.
-TCP/IP is the model used in production networks.
+## TCP/IP – The Model of the Internet
 
-**Conclusion:** Use OSI to understand concepts and TCP/IP to implement systems.
+TCP/IP is the practical networking model used to operate today’s Internet. Unlike OSI, TCP/IP was designed with real-world implementation in mind, resulting in a simpler structure with only four layers.
+
+The four layers of the TCP/IP model are:
+
+**Link:**  
+Combines the functionality of the Physical and Data Link layers in OSI.
+
+**Internet:**  
+Corresponds to the Network layer and is responsible for IP routing.
+
+**Transport:**  
+Ensures data transmission between processes (TCP, UDP).
+
+**Application:**  
+Includes application-level protocols such as HTTP, FTP, SMTP, and DNS.
+
+TCP/IP does not strictly separate layers like OSI, but it is more suitable for deploying and operating real-world network systems.
+
+## Example: Analyzing HTTP Packets with Wireshark
+
+Wireshark is a widely used tool for network traffic analysis. Using Wireshark, learners can directly observe how network layers operate in real environments.
+
+Basic practice steps:
+
+1. Open Wireshark and start capturing traffic on the active network interface.
+2. Visit a website, for example http://neverssl.com.
+3. In Wireshark, apply the `http` filter to display HTTP packets.
+4. Select a packet to observe protocol layers such as Ethernet (Link), IP (Network), TCP (Transport), and HTTP (Application).
+
+This practice helps learners visualize the relationship between the OSI and TCP/IP models through real network traffic.
+
+## Quick Comparison Between OSI and TCP/IP
+
+The OSI model is well suited for learning, research, and network troubleshooting due to its clear and detailed structure.
+
+The TCP/IP model is widely used in practice because it is simple, efficient, and aligned with Internet architecture.
+
+**Conclusion:**  
+OSI helps explain how networks work conceptually, while TCP/IP is the model used to implement and operate real-world network systems.
+
+## Relation to Cybersecurity
+
+In cybersecurity, the OSI model is often used to classify attack types. For example, eavesdropping attacks are commonly associated with the Physical or Data Link layers, while web-based attacks mainly occur at the Application layer.
+
+Understanding each layer enables learners to identify where an issue occurs and to select appropriate security controls and defensive strategies.
