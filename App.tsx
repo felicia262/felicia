@@ -239,8 +239,33 @@ const App: React.FC = () => {
             <section id="about" className="py-32 px-6 bg-[#f5f5f7]">
               <div className="max-w-4xl mx-auto text-center md:text-left">
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-12">{t.aboutTitle}</h2>
-                <div className="grid md:grid-cols-2 gap-12 text-lg text-gray-600 leading-relaxed text-left">
-                  <p>{t.aboutP1}</p><p>{t.aboutP2}</p>
+                <div className="grid md:grid-cols-2 gap-12 text-lg text-gray-600 leading-relaxed text-left items-start">
+                  <p className="whitespace-pre-line">{t.aboutP1}</p>
+
+                  <div className="max-w-md w-full">
+                    {(() => {
+                      const lines = (t.aboutP2 || '').split('\n').map(l => l.trim()).filter(Boolean);
+                      const header = lines[0] || '';
+                      const items = lines.slice(1);
+                      return (
+                        <div className="bg-white p-8 rounded-3xl shadow-lg border-l-4 border-blue-600">
+                          <h3 className="text-2xl font-semibold mb-4 text-gray-900">{header}</h3>
+                          <ul className="space-y-3 text-gray-700">
+                            {items.map((line, i) => {
+                              const [label, ...rest] = line.split(':');
+                              const value = rest.join(':').trim();
+                              return (
+                                <li key={i} className="flex gap-3 items-start">
+                                  <span className="text-blue-600 font-medium">{label}:</span>
+                                  <span className="flex-1">{value}</span>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      );
+                    })()}
+                  </div>
                 </div>
               </div>
             </section>
