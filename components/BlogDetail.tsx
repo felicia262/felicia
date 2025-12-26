@@ -205,7 +205,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({ post, t, onClose }) => {
                   <img src={post.author?.avatar} className="w-14 h-14 rounded-full" alt="Author" />
                   <div>
                     <h4 className="font-bold text-gray-900">{post.author?.name}</h4>
-                    <p className="text-sm text-gray-500">Creative Technologist & Writer</p>
+                    <p className="text-sm text-gray-500">Technology Learner & Knowledge Sharer</p>
                   </div>
                 </div>
                 
